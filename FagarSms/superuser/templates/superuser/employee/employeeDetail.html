@@ -1,0 +1,96 @@
+{% extends '../AdminDashboard.html' %}
+{% load static %}
+{% block dashboard %}
+
+{% include './employeeHeader.html' %}
+
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<div class="col s12 m8 center-by-margin">
+<!--EMPLOYEE BASIC DATA-->
+<div class="row" style="width: 100%;">        
+    <div class="col s12">
+        <div class="row text-center">
+            <h4>Información Basica</h4>
+        </div>    
+        <div class="card horizontal">                        
+            <div class="card-image">
+                <img src="{{ object.photo.url }}" class="profile-pic-medium mt-1 mb-1">                            
+                <button data-target="ProfilePicFormModal" class="btn-edit-profile-pic btn-small btn-floating waves-effect waves-light grey darken-2 modal-trigger"><i class="material-icons">add_a_photo</i></button>
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <h3>{{ object.name }} {{ object.last_name }}</h3>
+                    <div class="divider"></div>
+                    <br>
+                    <p>{{ object.user.email }}</p>
+                    <p>{{ object.phone }}</p>                                
+                </div>                
+            </div>
+            <a class="btn-large btn-floating halfway-fab waves-effect waves-light green btn modal-trigger" href="#ProfileFormModal"><i class="material-icons">edit</i></a>
+        </div>
+    </div>
+</div>
+<!--COMPANY DATA-->
+<div class="row text-center">
+    <h4>Trabaja en</h4>
+</div>
+    <ul class="collection" style="margin-right: 24px;">                
+        <li class="collection-item avatar">
+            <img src="{{ object.company.company_logo.url }}" alt="" class="circle">
+            <span class="title">{{ object.company.name }}</span>
+            <p>
+                <!--Firts Line Tipo de compañia-->
+                {% if object.company.type_of_company == '1' %}
+                    Aeropuerto<br>
+                {% endif %}
+                {% if object.company.type_of_company == '2' %}
+                    Aerolinea<br>
+                {% endif %}
+                {% if object.company.type_of_company == '3' %}
+                    Ciac<br>
+                {% endif %}
+                {% if object.company.type_of_company == '4' %}
+                    Omac<br>
+                {% endif %}
+                <!--Second Line Telefono-->
+                Telefono: {{ object.company.phone }}<br>
+                <!--Third Line Email-->
+                Email: {{ object.company.company_mail }}<br>
+            </p>
+            <a href="{% url 'superuser:company-detail' object.company.id %}" class="secondary-content"><i class="material-icons">remove_red_eye</i></a>            
+        </li>            
+    </ul>
+</div>
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<!-- Modal Formulario datos basicos -->
+<div id="ProfileFormModal" class="modal">
+    <div class="modal-content" id="update-profile-url">
+        {% include './modals/employeeUpdateProfile.html' %}
+    </div>
+</div>
+<!-- Modal Formulario foto de perfil -->
+<div id="ProfilePicFormModal" class="modal">
+    <div class="modal-content" id="update-profile-pic-url">
+        {% include './modals/employeeUpdateProfilePicture.html' %}
+    </div>
+</div>
+<!--SCRIPTS-->
+<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script type="text/javascript">
+        
+    $( document ).ready(function() {        
+        $('.modal').modal();        
+        $('#update-profile-url').load("{% url 'superuser:employee-update-profile' object.user.id %}");             
+        $('#update-profile-pic-url').load("{% url 'superuser:employee-update-profile-pic' object.user.id %}");
+    });
+</script>
+
+{% endblock%}

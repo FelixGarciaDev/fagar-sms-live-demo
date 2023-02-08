@@ -1,0 +1,15 @@
+<form action="{% url 'employees:update-profile-pic' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}        
+    <div class="file-field input-field">
+        <div class="btn">
+            <span>Seleccionar Foto de Perfil</span>
+            <input type="file" name="photo" accept="image/*" id="id_photo">
+        </div>
+        <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+        </div>
+    </div>
+    <button type='submit' class="waves-effect waves-light btn-large white-text">
+        Subir Foto
+    </button>
+  </form>

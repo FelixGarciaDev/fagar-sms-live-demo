@@ -1,0 +1,156 @@
+{% extends 'landingBase.html' %}
+{% load static %}
+{% block content %}
+
+<nav class="nav-mobile">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">Fagar-SMS</a>
+      <ul class="left">        
+        <li><a href="#" data-target="slide-out" class="sidenav-trigger" style="color: #5a5a5a"> <i class="material-icons">menu</i></a></li>        
+      </ul>
+    </div>
+</nav>
+
+<!--Left side panel on mobile-->
+<ul id="slide-out" class="sidenav menu-container">
+    <li>
+        <div class="green-material-square">
+          <div class="menu-logo"></div>
+        </div>
+    </li>
+    <li>
+        <div>
+            <ul class="collection principal-menu mt-0">                        
+              <li class="collection-item avatar principal-menu-item pl-0">
+                <a href="#!" class="pl-0 pr-0">
+                  <i class="material-icons circle black">phone_iphone</i>
+                  Aplicación Móvil
+                </a>
+              </li>
+              <li class="collection-item avatar principal-menu-item pl-0">
+                <a href="#!" class="pl-0 pr-0">
+                  <i class="material-icons circle red">contacts</i>
+                  Contacto
+                </a>
+              </li>
+              <li class="collection-item avatar principal-menu-item pl-0">
+                <a href="#!" class="pl-0 pr-0">
+                  <i class="material-icons circle cyan">speaker_notes</i>
+                  Preguntas Frecuentes
+                </a>
+              </li>           
+            </ul>
+        </div>        
+    </li>
+  </ul>
+  
+        
+<div class="row mb-0 left-side-container">
+    <!--Left side panel-->
+    <div class="col m3 left-side pl-0 pr-0 menu-container"> 
+        <div class="green-material-square">
+            <!--
+            <p><h1 class="center-align white-text">Fagar-SMS</h1></p>
+            <p><h6 class="center-align ">Por Aeroservicios fagar</h6></p>
+          -->
+          <div class="menu-logo"></div>
+        </div>
+        <div>
+            <ul class="collection principal-menu mt-0">
+              <li class="collection-item avatar principal-menu-item">
+                <a class="modal-trigger" href="#modalPhoneApp">
+                  <i class="material-icons circle black">phone_iphone</i>
+                  Aplicación Móvil
+                </a>
+              </li>
+              <li class="collection-item avatar principal-menu-item">
+                <a class="modal-trigger" href="#modalContact">
+                  <i class="material-icons circle red">contacts</i>
+                  Contacto
+                </a>
+              </li>
+              <li class="collection-item avatar principal-menu-item">
+                <a class="modal-trigger" href="#modalFAQ">
+                  <i class="material-icons circle cyan">speaker_notes</i>
+                  Preguntas Frecuentes
+                </a>
+              </li>           
+            </ul>
+        </div>        
+    </div>    
+
+    <!--Right side panel-->
+    <div id="airport-background" class="col s12 m9">
+        <div class="overlay white-text">        
+            <div id="welcome" class="container">
+              <div class="valign-wrapper">
+                <row>
+                  <h1>Gestión de la Seguridad Operacional</h1>
+                  <h2>A su alcance <a href="{% url 'landing:login' %}" id="start-desktop" class="waves-effect waves-light btn-large"><i class="material-icons left">airplanemode_active</i>Iniciar</a></h2>                  
+                  <p id="start-mobile" class="text-center mt-5"><a href="{% url 'landing:login' %}" class="waves-effect waves-light btn-large"><i class="material-icons left">airplanemode_active</i>Iniciar</a></p>
+                </row>                                
+              </div>
+            </div>       
+          </div>
+    </div>
+</div>
+
+<!--Phone App Modal-->
+<div id="modalPhoneApp" class="modal">
+  <div class="modal-content">
+    <h4>FagarApp</h4>
+    <p>Proximamente...</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+  </div>
+</div>
+
+<!--Contact Modal-->
+<div id="modalContact" class="modal">
+  <div class="modal-content">
+    <h4>Contacto</h4>
+    <div class="card horizontal">                        
+      <div class="card-image" style="max-width: 200px;">
+          <img src="{% static 'Images/FelixGarcia.jpg' %}" class="profile-pic-medium mt-1 mb-1">          
+      </div>
+      <div class="card-stacked">
+          <div class="card-content">
+              <h3>Felix Garcia</h3>
+              <div class="divider"></div>
+              <br>
+              <p><a href="mailto:felixgarcia.dev@gmail.com?Subject=He%20Visto%20Tu%20Aplicación%20FagarSms">Mail</a></p>
+              <p><a href="https://www.linkedin.com/in/felix-anibal-garcia/">LinkedIn</a></p>
+              <p><a href="https://github.com/FelixGarciaDev">GitHub</a></p>
+          </div>                
+      </div>      
+  </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+  </div>
+</div>
+
+<!--FAQ Modal-->
+<div id="modalFAQ" class="modal">
+  <div class="modal-content">
+    <h4>Preguntas frecuentes</h4>
+    <h6>¿Qu es FagarSms?</h6>
+    <p>FagarSms es un software como servicio diseñado para apoyar y direccionar los sistemas de gestión de la seguridad operacional en pequeños prestadores de servicios aéreos.</p>
+    <h6>¿Quiénes pueden usar FagarSMS?</h6>
+    <p>FagarSms puede ser usado por todo tipo de prestadores de servicios aéreos como:</p>
+    <ul>
+      <li>🚁 Aeropuertos y Helipuertos</li>
+      <li>🛫 Aerolíneas</li>
+      <li>✈ Prestadores de vuelos charter</li>
+      <li>👨‍✈️ Pilotos Particulares</li>
+      <li>🚕 Operadores de TaxyWay</li>
+      <li>🏢 Cualquier empresa que preste servicios relacionados a aviación civil</li>
+    </ul>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+  </div>
+</div>
+
+{% endblock %}

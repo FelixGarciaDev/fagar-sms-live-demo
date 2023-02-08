@@ -1,0 +1,34 @@
+{% load static %}
+<h3>Establezca el nivel de riesgo</h3>
+<form action="{% url 'managers:risk-report-level' object.id %}" method="post" enctype="multipart/form-data" class="col s12 center-by-margin" style="overflow: visible;">
+    {% csrf_token %}
+    
+    <div class="row mt-1">
+        <select name="probability" id="id_probability">
+            <option value="" disabled selected>Seleccióne el nivel de probabilidad</option>
+            <option value="1" data-icon="{% static '/Images/riskColors/1-improbable-insignificante.png'%}">Improbable</option>
+            <option value="2" data-icon="{% static '/Images/riskColors/2-remoto-menor.png'%}">Remoto</option>
+            <option value="3" data-icon="{% static '/Images/riskColors/3-ocasional-modarado.png'%}">Ocasional</option>
+            <option value="4" data-icon="{% static '/Images/riskColors/4-frecuente-grave.png'%}">Frecuente</option>
+            <option value="5" data-icon="{% static '/Images/riskColors/5-probable-catastrofico.png'%}">Muy probable</option>
+        </select>                        
+    </div>
+    
+    <div class="row mt-1">
+        <select name="consequence" id="id_consequence">
+            <option value="" disabled selected>Seleccione el nivel de severidad</option>
+            <option value="1" data-icon="{% static '/Images/riskColors/1-improbable-insignificante.png'%}">Insignificante</option>
+            <option value="2" data-icon="{% static '/Images/riskColors/2-remoto-menor.png'%}">Menor</option>
+            <option value="3" data-icon="{% static '/Images/riskColors/3-ocasional-modarado.png'%}">Moderado</option>
+            <option value="4" data-icon="{% static '/Images/riskColors/4-frecuente-grave.png'%}">Grave</option>
+            <option value="5" data-icon="{% static '/Images/riskColors/5-probable-catastrofico.png'%}">Catastrofico</option>
+        </select>                        
+    </div> 
+    
+    <div class="row center">                                
+        <button type='submit' class="waves-effect waves-light btn-large white-text">
+            Guardar
+        </button>
+    </div>
+    </div>    
+</form>

@@ -1,0 +1,27 @@
+
+    {{ object.date }} <br>
+    {{ object.place }} <br>        
+    {% if object.type_of_risk == '1' %}
+        Relacionado con vuelo<br>
+    {% endif %}
+    {% if object.type_of_risk == '2' %}
+        E.P.P.<br>
+    {% endif %}
+    {% if object.type_of_risk == '3' %}
+        Procedimientos<br>
+    {% endif %}
+    {% if object.type_of_risk == '4' %}
+        Mantenimiento Aeronáutico<br>
+    {% endif %}
+    {% if object.type_of_risk == '5' %}
+        FOD<br>
+    {% endif %}
+    {% if object.type_of_risk == '6' %}
+        Orden y limpieza<br>
+    {% endif %}
+    {% if object.type_of_risk == '7' %}
+        Acto inseguro<br>
+    {% endif %}
+    {% if object.type_of_risk == '8' %}
+        Otros<br>
+    {% endif %}               

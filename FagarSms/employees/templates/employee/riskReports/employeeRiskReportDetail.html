@@ -1,0 +1,59 @@
+{% extends '../employeeDashboard.html' %}
+{% load static %}
+{% block dashboard %}
+
+{% include './riskReportHeader.html' %}
+
+<!--RISKREPORT BASIC DATA-->
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<div class="col s12 m8 center-by-margin">
+    <div class="card">
+        <div class="card-image">
+            <div class="carousel carousel-slider center">        
+                <div class="carousel-item white-text" href="#one!" style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url({{ object.photo1.url }})">
+                  <div class="indicators" style="position: relative;">
+                    {% include './datePlaceType.html' %}
+                  </div>
+                </div>
+                <div class="carousel-item white-text" href="#two!" style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url({{ object.photo2.url }})">
+                    <div class="indicators" style="position: relative;">
+                        {% include './datePlaceType.html' %}
+                    </div>
+                </div>
+                <div class="carousel-item white-text" href="#three!" style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url({{ object.photo3.url }})">
+                    <div class="indicators" style="position: relative;">
+                        {% include './datePlaceType.html' %}
+                    </div>
+                </div>
+                <div class="carousel-item white-text" href="#four!" style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url({{ object.photo4.url }})">
+                    <div class="indicators" style="position: relative;">
+                        {% include './datePlaceType.html' %}
+                    </div>
+                </div>
+                <div class="carousel-item white-text" href="#four!" style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url({{ object.photo5.url }})">
+                    <div class="indicators" style="position: relative;">
+                        {% include './datePlaceType.html' %}
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="card-content">            
+            <!--DESCRIPTION-->
+            <h5>Decripción:</h5>
+            <p>{{ object.description }}</p><br>
+            <div class="divider"></div>
+            <!--RECOMENDATIONS-->
+            <h5>Recomendaciones:</h5>
+            <p>{{ object.recmendations }}</p><br>
+        </div>        
+    </div>
+</div>
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+{% endblock %}

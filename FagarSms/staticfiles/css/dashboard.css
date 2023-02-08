@@ -1,0 +1,162 @@
+/*Mobile Rules*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+    .nav-mobile{
+        display: block !important;
+        background-color: #E1E1E1;
+    }
+    
+    .left-side{
+        display:none;
+    }
+
+    .mb-mobile-for-floating-btn{
+        margin-bottom: 90px;
+    }
+
+    .profile-pic-medium{
+        height: 110px !important;
+        width: auto !important;
+        border-radius: 50% !important;
+        max-width: 110px !important;
+    }
+
+    .mobile-card{
+        margin-bottom: 1rem;
+    }
+
+    .mobile-chart{
+        width: 100% !important;
+        height: 400px !important;
+    }
+
+}
+
+/*Desktop Rules*/
+
+.green-material-square {
+    min-height: 30vh;
+    background-color: #26a69a;
+    overflow: auto;    
+ }
+
+ .nav-mobile{
+    display: none
+}
+
+.employee-background{
+    background: url("../Images/action-banners/airline_employees.jpg") no-repeat center center;
+    background-size: cover;
+    padding: 0px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.company-background{
+    background: url("../Images/action-banners/plane1.jpg") no-repeat center center;
+    background-size: cover;
+    padding: 0px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.sms-manager-background{
+    background: url("../Images/action-banners/sms-manager.jpeg") no-repeat;
+    background-size: cover;
+    background-position-y: 20%;
+    padding: 0px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.risk-report-background{
+    background: url("../Images/action-banners/RiskReport.jpg") no-repeat center center;
+    background-size: cover;
+    padding: 0px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.profile-background{
+    background: url("../Images/action-banners/writing2.jpg") no-repeat center bottom;
+    background-size: cover;
+    padding: 0px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.task-background{
+    background: url("../Images/action-banners/defenses.jpg") no-repeat center center;
+    background-size: cover;
+    padding: 0px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+
+.overlay-banner {    
+    display: block; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */    
+    height: 106px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.6); /* Black background with opacity */    
+    z-index: 2;
+    padding: 0px;
+    margin-top: 0px;
+}
+
+.overlay-banner .valign-wrapper h3{
+    font-weight: bold;
+}
+
+.profile-pic-small{
+    height: 75px;    
+    width: auto !important;
+    border-radius: 50% !important;
+    max-width: 75px !important;
+}
+
+.profile-pic-medium{
+    height: 200px;
+    width: auto !important;
+    border-radius: 50% !important;
+    max-width: 200px;
+}
+
+.profile-pic-big{
+    height: 500px;
+    width: auto !important;
+    border-radius: 50% !important;
+    max-width: 500px !important;
+}
+
+.btn-edit-profile-pic{
+    position: absolute;
+    top: 20%;
+    left: 80%;
+}
+
+.carousel .indicators {
+    background-color: rgba(0,0,0,0.3);
+}
+
+#addLevelModal{
+    overflow: visible !important;
+}
+
+.card .card-content {
+    padding: 12px !important;
+}
+
+.indicators{
+    font-weight: bold !important;
+}
+
+.mobile-chart{
+    width: 100% !important;
+    height: 450px !important;
+}

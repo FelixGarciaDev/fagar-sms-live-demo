@@ -1,0 +1,139 @@
+@media (max-width: 480px) {
+	.main-content {		
+		height: auto !important;
+		overflow: visible !important;		
+	}
+	
+	.main-content-center {
+		background-color: white !important;
+	}
+}
+
+
+/*Jover Rules*/
+
+html {
+	background-color: #ececec;
+}
+.green-material-square {
+	display: grid;
+	padding: 7% 0;
+	background-color: #26a69a;
+	overflow: auto;
+}
+
+.menu-logo {
+	display: block;
+	background:none;
+	background-image: url(../Images/logofagar.png);	
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	width: 80%;
+	height: 100%;
+	padding: 10%;
+	margin: 0 10%;
+}
+
+.left-side-container {
+	background-color: #f9f9f9; 
+}
+
+.menu-container {
+	height: 100vh;
+}
+.menu-container .green-material-square { 
+	min-height: 22vh; 
+}
+.menu-container .principal-menu {  }
+.menu-container .principal-menu .principal-menu-item {  }
+.menu-container .principal-menu .principal-menu-item {
+    padding: 20px;
+    min-height: auto;
+}
+.menu-container .principal-menu .principal-menu-item a { 
+	color: #585858;
+    display: block;
+    font-size: 20px;
+}
+.menu-container .principal-menu .principal-menu-item a i { 
+    position: inherit !important;
+    margin: 10px;
+    background-color: #26a69a !important;
+}
+
+
+
+.main-content {
+	background-color: #ececec;
+	height: 100vh;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+.main-content .main-content-center > .row, .card.horizontal, .collection-header {
+	padding: 16px !important;
+	background-color: #fff !important;
+	border-radius: 5px !important;
+}
+.card.horizontal.indicator-card {
+	padding: 0 !important;
+}
+
+.main-content .collection.with-header { 
+	border: none !important; 
+}
+
+.main-content .main-content-center > .row *, .card.horizontal, .collection-header {
+	box-shadow: none !important;
+}
+
+.main-content .main-content-center .cards-container {
+	max-height: 22vh;
+	display: block;
+}
+.main-content .main-content-center .cards-container > div {
+	height: 16vh;
+}
+.main-content .main-content-center .cards-container .card {
+	height: 100%;
+	margin: 0;
+}
+
+
+.main-content .main-content-center .tab-container {
+}
+
+.main-content .main-content-center .tab-container .tabs .tab a {
+	font-size: 18px;
+	color: #666;
+}
+
+.main-content .main-content-center .tab-container .tabs .tab a.active, .main-content .main-content-center .tab-container .tabs .tab a:hover {
+	color: #26a69a !important;
+}
+
+.main-content .main-content-center .tab-container .tabs .indicator {
+	background-color: #26a69a !important;
+}
+
+/* Hover */
+
+.menu-container .principal-menu .principal-menu-item:hover {
+	background-color: #26a69a !important;
+}
+.menu-container .principal-menu .principal-menu-item:hover a i {
+	background-color: #fff !important;
+	color: #26a69a !important;
+}
+.menu-container .principal-menu .principal-menu-item:hover a {
+	color: #fff !important;
+}
+
+.overlay-banner {
+	height: 22vh;
+}
+
+.overlay-banner .valign-wrapper {
+	height: 100%;
+}

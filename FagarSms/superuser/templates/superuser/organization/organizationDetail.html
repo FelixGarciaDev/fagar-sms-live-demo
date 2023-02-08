@@ -1,0 +1,117 @@
+{% extends '../AdminDashboard.html' %}
+{% load static %}
+{% block dashboard %}
+
+{% include './organizationHeader.html' %}
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<div class="col s12 m8 center-by-margin">
+    <!--COMAPY BASIC DATA-->
+    <h5>Información del prestador:</h5>
+    <!--Mobile Version-->
+    <div class="card hide-on-non-mobile">
+        <div class="card-image">
+          <img src="{{ object.company_logo.url }}">          
+        </div>
+        <div class="card-content">
+            <h3>{{ object.name }}</h3>
+            <h5>
+                {% if object.type_of_company == '1' %}
+                    Aeropuerto<br>
+                {% endif %}
+                {% if object.type_of_company == '2' %}
+                    Aerolinea<br>
+                {% endif %}
+                {% if object.type_of_company == '3' %}
+                    Ciac<br>
+                {% endif %}
+                {% if object.type_of_company == '4' %}
+                    Omac<br>
+                {% endif %}
+            </h5>
+            <div class="divider"></div>
+            <br>                  
+            <p>Telefono: {{ object.phone }}</p>
+            <p>Email: {{ object.company_mail }}</p>
+            <p>Rif: {{ object.rif }}</p>
+        </div>        
+      </div>
+    <!--Desktop version-->
+    <div class="card horizontal mt-1 hide-on-med-and-down">                        
+        <div class="card-image">
+            <img src="{{ object.company_logo.url }}" class="profile-pic-medium mt-1 mb-1">
+        </div>
+        <div class="card-stacked">
+            <div class="card-content">                
+                <h3>{{ object.name }}</h3>
+                <h5>
+                    {% if object.type_of_company == '1' %}
+                        Aeropuerto<br>
+                    {% endif %}
+                    {% if object.type_of_company == '2' %}
+                        Aerolinea<br>
+                    {% endif %}
+                    {% if object.type_of_company == '3' %}
+                        Ciac<br>
+                    {% endif %}
+                    {% if object.type_of_company == '4' %}
+                        Omac<br>
+                    {% endif %}
+                </h5>
+                <div class="divider"></div>
+                <br>                  
+                <p>Telefono: {{ object.phone }}</p>
+                <p>Email: {{ object.company_mail }}</p>
+                <p>Rif: {{ object.rif }}</p>
+            </div>                
+        </div>        
+    </div>
+    <!--MANAGER OF COMPANY-->   
+    <h5>Gestionado por:</h5>
+    <!--Mobile Version-->
+    <div class="card hide-on-non-mobile">
+        <div class="card-image">
+          <img src="{{ object.company_sms_manager.photo.url }}">          
+        </div>
+        <div class="card-content">            
+            <h3>{{ object.company_sms_manager.name }} {{ object.company_sms_manager.last_name }}</h3>
+            <div class="divider"></div>
+            <br>
+            <p>{{ object.company_sms_manager.user }}</p>
+            <p>{{ object.company_sms_manager.phone }}</p>
+        </div>
+        <div class="card-action">        
+          <a href="{% url 'superuser:sms-manager-detail' object.company_sms_manager.user.id %}">Ver Detalles del gerente</a>
+        </div>
+      </div>
+    <!--DesktopVerions-->
+    <div class="card horizontal mt-1 hide-on-med-and-down">                                
+        <div class="card-image">
+            <img src="{{ object.company_sms_manager.photo.url }}" class="profile-pic-medium mt-1 mb-1">
+        </div>
+        <div class="card-stacked">
+            <div class="card-content">
+                <a href="{% url 'superuser:sms-manager-detail' object.company_sms_manager.user.id %}" class="secondary-content"><i class="material-icons">remove_red_eye</i></a>
+                <h3>{{ object.company_sms_manager.name }} {{ object.company_sms_manager.last_name }}</h3>
+                <div class="divider"></div>
+                <br>
+                <p>{{ object.company_sms_manager.user }}</p>
+                <p>{{ object.company_sms_manager.phone }}</p>                   
+            </div>                
+        </div>        
+    </div>
+    <!--BASIC INDICATORS-->
+    <h5>Indicadores Rapidos:</h5>   
+
+    </div>    
+</div>
+
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+{% endblock %}

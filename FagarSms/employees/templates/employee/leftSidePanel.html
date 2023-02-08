@@ -1,0 +1,45 @@
+<div class="col m3 left-side pl-0 pr-0 menu-container">
+    <div class="green-material-square">          
+      <div class="menu-logo"></div>
+    </div>
+    <div>
+      <ul class="collection principal-menu mt-0 mb-0">
+        <li id="item-dashboard" class="collection-item avatar principal-menu-item">
+          <a href="{% url 'employees:dashboard' %}">
+            <i class="material-icons circle ">dashboard</i>
+            Inicio
+          </a>
+        </li>          
+        <li id="item-profile" class="collection-item avatar principal-menu-item">
+          <a href="{% url 'employees:profile' %}">
+            <i class="material-icons circle ">person</i>
+            Perfil
+          </a>
+        </li>
+        <li id="item-tasks" class="collection-item avatar principal-menu-item">
+          <a href="{% url 'employees:task-list' %}" class="pl-0">
+            <i class="material-icons circle ">assignment</i>
+            Tareas
+          </a>
+        </li>          
+        <li id="item-reports" class="collection-item avatar principal-menu-item">
+          <a href="{% url 'employees:risk-report-list' %}">
+            <i class="material-icons circle ">report_problem</i>
+            Reportes de Riesgo
+          </a>
+        </li>
+        <li id="item-incidents-accidents" class="collection-item avatar principal-menu-item">
+          <a href="{% url 'employees:incident-accident-list' %}">
+            <i class="material-icons circle ">report</i>
+            Incidentes y Accidentes
+          </a>
+        </li>
+        <li id="item-logout" class="collection-item avatar principal-menu-item">
+          <a href="{% url 'landing:logout' %}">
+            <i class="material-icons circle ">exit_to_app</i>
+            Salir
+          </a>
+      </li>                      
+      </ul>
+    </div>        
+</div> 

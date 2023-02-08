@@ -1,0 +1,40 @@
+{% load static %}
+<h4>Añadir una nueva defensa</h4>
+<form method="post" action="/sms-manager/dashboard/risk-report-task-update/{{ report.id }}/" class="col s12 center-by-margin">
+    {% csrf_token %}
+    
+    <div class="row">
+        <div class="input-field col s12">
+            <select name="reponsable" required id="id_reponsable">
+                {% if form.reponsable.value == None %}
+                    <option value="" disabled selected>Debe seleccionar un responsable</option>                           
+                {% endif %}                
+                    <option value="{{ manager.user.id }}" data-icon="{{ manager.photo.url }}">{{ manager.user }}</option>
+                {% for employee in employees %}
+                    <option value="{{ employee.user.id }}" data-icon="{{ employee.photo.url }}">{{ employee.user }}</option>        
+                {% endfor %}
+            </select>
+            <label for="id_reponsable">Responsable:</label>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="input-field col s12">    
+            {{ form.taskDescription }}
+            <label for="id_taskDescription">Descripción:</label>
+        </div>
+    </div>
+    
+    <div class="row center">                                
+        <button type='submit' class="waves-effect waves-light btn-large white-text">
+            Guardar
+        </button>
+    </div>    
+</form>
+
+<script>
+    $(document).ready(function(){
+        $('.modal').modal();
+        $('select').formSelect();
+    });
+  </script>

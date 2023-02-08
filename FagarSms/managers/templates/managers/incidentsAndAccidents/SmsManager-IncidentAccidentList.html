@@ -1,0 +1,96 @@
+{% extends '../managerDashboard.html' %}
+{% load static %}
+{% block dashboard %}
+
+{% include './incidentAccidentHeader.html' %}
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<div class="col s12 m8 center-by-margin main-content-center">
+    <div class="row tab-container">
+        <div class = "col s12 tab-container-tabs">
+            <ul class = "tabs tab-container-tabs">
+                <li class = "tab col s6"><a class = "active" href = "#inbox">Incidentes</a></li>
+                <li class = "tab col s6"><a href = "#unread">Accidentes</a></li>            
+            </ul>
+        </div>
+
+        <div id = "inbox" class = "col s12">
+            <ul class="collection with-header mb-mobile-for-floating-btn">
+                <li class="collection-header">
+                    <form action='{% url 'managers:incident-accident-search' %}' method='GET'>
+                        {% csrf_token %}
+                        <div class="input-field">
+                            <i class="material-icons prefix">search</i>        
+                            <input name="my_search" type="text" placeholder="Busqueda por descripcíon, fecha o quien hizo el reporte">
+                        </div>
+                    </form>
+                </li>        
+                {% for instance in incidents.all %}
+                <li class="collection-item avatar">
+                <img src="{{ instance.photo1.url }}" alt="Image Not Found" class="" style="max-width: 3rem; position: absolute; left: 1rem;">
+                <span class="title">{{ instance.date }}</span>
+                <p class="colecction-elipsis-text">
+                    {{ instance.place }} <br>                
+                    {{ instance.description }}<br>
+                </p>
+                <a href="{% url 'managers:incident-accident-detail' instance.id %}" class="secondary-content"><i class="material-icons">remove_red_eye</i></a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div id = "unread" class = "col s12">
+            <ul class="collection with-header mb-mobile-for-floating-btn">
+                <li class="collection-header">
+                    <form action='{% url 'managers:incident-accident-search' %}' method='GET'>
+                        {% csrf_token %}
+                        <div class="input-field">
+                            <i class="material-icons prefix">search</i>        
+                            <input name="my_search" type="text" placeholder="Busqueda por descripcíon, fecha o quien hizo el reporte">
+                        </div>
+                    </form>
+                </li>        
+                {% for instance in accidents.all %}
+                <li class="collection-item avatar">
+                <img src="{{ instance.photo1.url }}" alt="Image Not Found" class="" style="max-width: 3rem; position: absolute; left: 1rem;">
+                <span class="title">{{ instance.date }}</span>
+                <p class="colecction-elipsis-text">
+                    {{ instance.place }} <br>                
+                    {{ instance.description }}<br>
+                </p>
+                <a href="{% url 'managers:incident-accident-detail' instance.id %}" class="secondary-content"><i class="material-icons">remove_red_eye</i></a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!--Floating Button-->
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top" data-tooltip="Nuevo Incidente / Accidente" href="{% url 'managers:incident-accident-create' %}">
+            <i class="material-icons">add</i>
+        </a>
+    </div>
+    
+</div>
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+{% if messages %}  
+    {% for message in messages %}
+        <script>
+            document.addEventListener('DOMContentLoaded', function toast() {
+                let message = "{{ message }}"
+                var toastHTML = '<span>'+message+'</span>';
+                M.toast({html: toastHTML, displayLength: 5000,classes: 'rounded'});
+                
+            });            
+        </script>
+    {% endfor %} 
+{% endif %}
+
+{% endblock %}

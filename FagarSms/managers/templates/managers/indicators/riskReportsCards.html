@@ -1,0 +1,155 @@
+<!--the company-->
+<div class="col s12 m3 mobile-card">
+    <div class="card indicator-card horizontal grey lighten-5 z-depth-1 valign-wrapper">                        
+        <div class="card-image">
+            <img src="{{ company.company_logo.url }}" class="profile-pic-small mt-1 mb-1 ml-0">                        
+        </div>
+        <div class="card-stacked">
+            <div class="card-content">
+                <p>{{ company.name }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--the risk reports--> 
+<!--green-->
+{% if risk_report_card_color == 'green' %}
+<div class="col s12 m3 mobile-card">
+    <div id="riskReportIndicatorsCard" class="card indicator-card horizontal gradient-45deg-green-teal min-height-100 white-text animate fadeRight z-depth-1">
+        <div class="card-stacked">
+            <div class="card-content pt-1">
+                <h6 class="mt-0 mb-0">Reportes de Riesgo</h6>                        
+                <ul class="ml-0" style="margin-top: 8px;">
+                    <li>Esta Semana: {{ reports_this_week }}</li>
+                    <li>En el mes: {{ reports_this_month }}</li>
+                    <li>En el año: {{ reports_this_year }}</li>
+                </ul>  
+            </div>
+        </div>
+     </div>
+</div>
+{% endif %}
+<!--orange-->
+{% if risk_report_card_color == 'orange' %}
+<div class="col s12 m3 mobile-card">
+    <div id="riskReportIndicatorsCard" class="card indicator-card horizontal gradient-45deg-amber-amber min-height-100 white-text animate fadeRight z-depth-1">
+        <div class="card-stacked">
+            <div class="card-content pt-1">
+                <h6 class="mt-0 mb-0">Reportes de Riesgo</h6>                        
+                <ul class="ml-0" style="margin-top: 8px;">
+                    <li>Estas Semana: {{ reports_this_week }}</li>
+                    <li>En el mes: {{ reports_this_month }}</li>
+                    <li>En el año: {{ reports_this_year }}</li>
+                </ul>  
+            </div>
+        </div>
+     </div>
+</div>
+{% endif %}
+<!--red-->
+{% if risk_report_card_color == 'red' %}
+<div class="col s12 m3 mobile-card">
+    <div id="riskReportIndicatorsCard" class="card indicator-card horizontal gradient-45deg-red-pink min-height-100 white-text animate fadeRight z-depth-1">
+        <div class="card-stacked">
+            <div class="card-content pt-1">
+                <h6 class="mt-0 mb-0">Reportes de Riesgo</h6>                        
+                <ul class="ml-0" style="margin-top: 8px;">
+                    <li>Estas Semana: {{ reports_this_week }}</li>
+                    <li>En el mes: {{ reports_this_month }}</li>
+                    <li>En el año: {{ reports_this_year }}</li>
+                </ul>  
+            </div>
+        </div>
+     </div>
+</div>
+{% endif %}
+
+<!------------------------------------INCIDENTS------------------------------------------------------------>
+{% if incidents_this_week == 0 and incidents_this_month == 0 and incidents_this_year <= 5 %}
+<div class="col s12 m3 mobile-card">
+    <div id="incidentAccidentIndicatorsCard" class="card indicator-card horizontal gradient-45deg-green-teal min-height-100 white-text animate fadeRight z-depth-1">
+        <div class="card-stacked">
+            <div class="card-content pt-1">
+                <h6 class="mt-0 mb-0">Incidentes</h6>                        
+                <ul class="ml-0" style="margin-top: 8px;">
+                    <li>Esta semana: {{ incidents_this_week }}</li>
+                    <li>En el mes: {{ incidents_this_month }}</li>
+                    <li>En el año: {{ incidents_this_year }}</li>
+                </ul>  
+            </div>
+        </div>      
+    </div>
+</div>
+{% endif %}
+
+{% if incidents_this_week >= 1 and incidents_this_week <= 2 or incidents_this_month >= 1 and incidents_this_month <= 3 or incidents_this_year >= 3 and incidents_this_year <= 6 %}
+
+<div class="col s12 m3 mobile-card">
+    <div id="riskReportIndicatorsCard" class="card indicator-card horizontal gradient-45deg-amber-amber min-height-100 white-text animate fadeRight z-depth-1">
+        <div class="card-stacked">
+            <div class="card-content pt-1">
+                <h6 class="mt-0 mb-0">Incidentes</h6>                        
+                <ul class="ml-0" style="margin-top: 8px;">
+                    <li>Estas Semana: {{ incidents_this_week }}</li>
+                    <li>En el mes: {{ incidents_this_month }}</li>
+                    <li>En el año: {{ incidents_this_year }}</li>
+                </ul>  
+            </div>
+        </div>
+     </div>
+</div>
+{% endif %}
+
+{% if incidents_this_week >= 6 or incidents_this_month >= 6 or incidents_this_year >= 11 %}
+
+<div class="col s12 m3 mobile-card">
+    <div id="incidentAccidentIndicatorsCard" class="card indicator-card horizontal gradient-45deg-red-pink min-height-100 white-text animate fadeRight z-depth-1">
+        <div class="card-stacked">
+            <div class="card-content pt-1">
+                <h6 class="mt-0 mb-0">Incidentes</h6>                        
+                <ul class="ml-0" style="margin-top: 8px;">
+                    <li>Esta semana: {{ incidents_this_week }}</li>
+                    <li>En el mes: {{ incidents_this_month }}</li>
+                    <li>En el año: {{ incidents_this_year }}</li>
+                </ul>  
+            </div>
+        </div>      
+    </div>
+</div>
+{% endif %}
+
+<!------------------------------------ACCIDENTS---------------------------------------------------------->
+
+{% if accidents_this_week == 0 and accidents_this_month == 0 and accidents_this_year == 0 %}
+<div class="col s12 m3 mobile-card">
+    <div id="incidentAccidentIndicatorsCard" class="card indicator-card horizontal gradient-45deg-green-teal min-height-100 white-text animate fadeRight z-depth-1">
+        <div class="card-stacked">
+            <div class="card-content pt-1">
+                <h6 class="mt-0 mb-0">Accidentes</h6>                        
+                <ul class="ml-0" style="margin-top: 8px;">
+                    <li>Esta semana: {{ accidents_this_week }}</li>
+                    <li>En el mes: {{ accidents_this_month }}</li>
+                    <li>En el año: {{ accidents_this_year }}</li>
+                </ul>  
+            </div>
+        </div>      
+    </div>
+</div>
+{% endif %}
+
+{% if accidents_this_week >= 1 or accidents_this_month >= 1 or accidents_this_year >= 1 %}
+<div class="col s12 m3 mobile-card">
+    <div id="incidentAccidentIndicatorsCard" class="card indicator-card horizontal gradient-45deg-red-pink min-height-100 white-text animate fadeRight z-depth-1">
+        <div class="card-stacked">
+            <div class="card-content pt-1">
+                <h6 class="mt-0 mb-0">Accidentes</h6>                        
+                <ul class="ml-0" style="margin-top: 8px;">
+                    <li>Esta semana: {{ accidents_this_week }}</li>
+                    <li>En el mes: {{ accidents_this_month }}</li>
+                    <li>En el año: {{ accidents_this_year }}</li>
+                </ul>  
+            </div>
+        </div>      
+    </div>
+</div>
+{% endif %}

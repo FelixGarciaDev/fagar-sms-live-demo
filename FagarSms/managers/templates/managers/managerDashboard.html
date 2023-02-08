@@ -1,0 +1,20 @@
+{% extends 'dashboardBase.html' %}
+{% load static %}
+{% block content %}
+
+{% include './navMobile.html' %}  
+
+<div class="row mb-0">
+    <!--Left side panel-->
+    {% include './leftSidePanel.html' %}  
+       
+
+    <!--Right side panel-->
+    <div class="col s12 m9 pl-0 pr-0 main-content">
+        {% block dashboard %}
+
+        {% endblock %}
+    </div>
+</div>
+
+{% endblock %}

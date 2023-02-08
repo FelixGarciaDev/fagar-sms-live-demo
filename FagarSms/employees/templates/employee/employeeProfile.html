@@ -1,0 +1,66 @@
+{% extends './employeeDashboard.html' %}
+{% load static %}
+{% block dashboard %}
+
+<div class="row profile-background">
+    <div class="overlay-banner white-text">                
+        <div class="valign-wrapper">   
+            <h3 class="ml-2">Perfil</h3>
+        </div>       
+    </div>
+</div>
+
+<!--EMPLOYEE BASIC DATA-->
+<div class="row">
+    <div class="container">
+        <div class="valign-wrapper">
+            <div class="row" style="width: 100%;">        
+                <div class="col s12">
+                    <div class="row text-center">
+                        <h4>Información Basica</h4>
+                    </div>    
+                    <div class="card horizontal">                        
+                        <div class="card-image">
+                            <img src="{{ object.photo.url }}" class="profile-pic-medium mt-1 mb-1">                            
+                            <button data-target="ProfilePicFormModal" class="btn-edit-profile-pic btn-small btn-floating waves-effect waves-light grey darken-2 modal-trigger"><i class="material-icons">add_a_photo</i></button>
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h3>{{ object.name }} {{ object.last_name }}</h3>
+                                <div class="divider"></div>
+                                <br>
+                                <p>{{ object.user.email }}</p>
+                                <p>{{ object.phone }}</p>                                
+                            </div>                
+                        </div>
+                        <a class="btn-large btn-floating halfway-fab waves-effect waves-light green btn modal-trigger" href="#ProfileFormModal"><i class="material-icons">edit</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Formulario datos basicos -->
+<div id="ProfileFormModal" class="modal">
+    <div class="modal-content" id="update-profile-url">
+        {% include './modals/employeeUpdateProfile.html' %}
+    </div>
+</div>
+<!-- Modal Formulario foto de perfil -->
+<div id="ProfilePicFormModal" class="modal">
+    <div class="modal-content" id="update-profile-pic-url">
+        {% include './modals/employeeUpdateProfilePicture.html' %}
+    </div>
+</div>
+<!--SCRIPTS-->
+<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script type="text/javascript">        
+    $( document ).ready(function() {        
+        $('.modal').modal();        
+        $('#update-profile-url').load("{% url 'employees:update-profile' %}");             
+        $('#update-profile-pic-url').load("{% url 'employees:update-profile-pic' %}");
+    });
+</script>
+
+{% endblock%}

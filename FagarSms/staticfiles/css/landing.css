@@ -1,0 +1,64 @@
+/*Mobile Rules*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+    .nav-mobile{
+        display: block !important;
+        background-color: #E1E1E1;
+    }
+    
+    .left-side{
+        display:none;
+    }
+
+    #start-desktop{
+        display: none !important;
+    }
+
+    #start-mobile{
+        display: block !important;
+    }
+
+    #airport-background{
+        background-position-x: 40% !important;
+    }
+    
+}
+
+/*Desktop Rules*/
+
+
+
+ .nav-mobile{
+    display: none
+}
+
+#airport-background{
+    background: url("../Images/airport1.jpg") no-repeat center center;
+    background-size: cover;
+    padding: 0px;
+}
+
+.overlay {    
+    display: block; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */    
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.6); /* Black background with opacity */    
+    z-index: 100;
+    padding: 0px;
+    margin-top: 0px;
+}
+
+#airport-background .valign-wrapper{
+    height: 100vh;
+}
+
+#start-mobile{
+    display: none;
+}
+
+

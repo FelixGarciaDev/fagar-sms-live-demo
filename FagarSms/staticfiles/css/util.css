@@ -1,0 +1,15 @@
+
+@media (min-width: 481px){
+    .hide-on-non-mobile{
+        display:none !important
+    }
+}
+.text-center{
+    text-align: center;
+}
+
+.center-by-margin{
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+

@@ -1,0 +1,28 @@
+/*brillo externo de la caja*/
+.gradient-45deg-green-teal.gradient-shadow {
+    box-shadow: 0 6px 20px 0 rgba(29,233,182,.5) !important;
+}
+/*color de la caja*/
+.gradient-45deg-green-teal {    
+    background: linear-gradient(45deg,#43a047,#1de9b6) !important;
+}
+/*brillo externo de la caja*/
+.gradient-45deg-amber-amber.gradient-shadow {
+    box-shadow: 0 6px 20px 0 rgba(255,202,40,.5) !important;
+}
+/*color de la caja*/
+.gradient-45deg-amber-amber {    
+    background: linear-gradient(45deg,#ff6f00,#ffca28) !important;
+}
+/*brillo externo de la caja*/
+.gradient-45deg-red-pink.gradient-shadow {
+    box-shadow: 0 6px 20px 0 rgba(244,143,177,.5) !important;
+}
+/*color de la caja*/
+.gradient-45deg-red-pink {    
+    background: linear-gradient(45deg,#be1414,#e05282) !important;
+}
+
+.indicator-card{
+    height: 140px;
+}

@@ -1,0 +1,48 @@
+{% load static %}
+<div class="col s12">
+    <div class="card horizontal mobile-chart">      
+        <canvas id="RiskReportTypesByMonthCanvas"></canvas>
+
+        <script>            
+            let donutData = {
+                        "labels":["Vuelo","E.P.P.","Procedimientos","Mantenimiento","F.O.D.","Orden y Limpieza","Acto Inseguro", "Otros"],
+                        "datasets":[{
+                            "label":"My First Dataset",
+                            "data":[{{ Vuelo_this_year }},
+                                    {{ EPP_this_year }},
+                                    {{ Procedimientos_this_year }},
+                                    {{ Mantenimiento_this_year }},
+                                    {{ FOD_this_year }},
+                                    {{ OrdenLimpieza_this_year }},
+                                    {{ ActoInseguro_year }},
+                                    {{ Otros_this_year }}],
+                            "backgroundColor":[ "rgb(0, 204, 102)",
+                                                "rgb(0, 102, 255)",
+                                                "rgb(133, 51, 255)",
+                                                "rgb(255, 77, 255)",
+                                                "rgb(230, 0, 92)",
+                                                "rgb(255, 83, 26)",
+                                                "rgb(153, 77, 0)",
+                                                "rgb(255, 209, 26)",]
+                                    }]
+                            };
+
+            var RiskReportTypesByMonth = document.getElementById('RiskReportTypesByMonthCanvas').getContext('2d');
+            window.myBar = new Chart( RiskReportTypesByMonth, {
+                type: 'doughnut',
+                data: donutData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Tipos de reporte de riesgo este año'
+                    }
+                }
+            });    
+        </script>
+    </div>
+</div>

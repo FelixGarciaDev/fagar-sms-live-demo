@@ -1,0 +1,87 @@
+{% extends '../managerDashboard.html' %}
+{% load static %}
+{% block dashboard %}
+
+{% include './taskHeader.html' %}
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<div class="col s12 m8 center-by-margin card horizontal">
+    <form method="post" enctype="multipart/form-data" class="col s12 m9 center-by-margin">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.description }}
+                <label for="id_description">Describer las tareas de defensa o acciones correctivas:</label>
+            </div>
+        </div>
+        <!--RESPONSABLE-->
+        <div class="row">
+            <div class="input-field col s12">
+                <select name="company_sms_manager" required="" id="id_company_sms_manager">
+                    {% if form.reponsable.value == None %}
+                    <option value="" disabled selected>Debe seleccionar un responsable</option>
+                    {% else %} 
+                        {% for manager in sms_managers %}
+                            {% if manager.user.id == form.company_sms_manager.value  %}
+                            <option value="{{ manager.user.id }}" disabled selected>{{ manager.user }}</option>
+                            {% endif %}
+                        {% endfor %}            
+                    {% endif %}
+                    {% for employee in employees %}
+                        <option value="{{ employee.user.id }}" data-icon="{{ employee.photo.url }}">{{ employee.user }}</option>        
+                    {% endfor %}
+                </select>
+                <label>Responsable</label>
+            </div>
+        </div>
+
+        
+        <div class="row">
+            <div class="input-field col s12">    
+                <input type="text" name="date" required="" id="id_dateOne" class="datepicker">
+                <label for="id_dateOne">Selecciona una fecha de plazo limite</label>
+            </div>
+        </div>
+
+        <div class="row center">
+            <button type='submit' class="waves-effect waves-light btn-large white-text">
+                Crear Nuevas Tareas de defensa
+            </button>
+        </div>
+        
+    </form>
+</div>
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<!--SCRIPTS-->
+<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script>
+    $(document).ready(function(){
+        $('select').formSelect();
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            i18n: {
+                months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+                weekdays: ["Domingo","Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+                weekdaysShort: ["Dom","Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+                weekdaysAbbrev: ["D","L", "M", "M", "J", "V", "S"],
+                today: 'Hoy',
+		        clear: 'Limpiar',
+		        close: 'Ok',
+                cancel: 'Cancelar',
+		        labelMonthNext: 'Siguiente mes',
+			    labelMonthPrev: 'Mes anterior',			    
+            }
+        });                
+    });        
+</script>
+
+{% endblock %}

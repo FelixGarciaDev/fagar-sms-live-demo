@@ -1,0 +1,83 @@
+<div class="row center mt-1">
+
+    {% if object.level_of_risk == '' %}
+        <p>Debe establecer un nivel de riesgo para asignar tareas o defensas</p>
+        <br>
+        <a href="#addLevelModal" class="waves-effect waves-light btn modal-trigger">Establecer nivel de riesgo</a>                
+    {% endif %}
+    {% if object.level_of_risk != '' %}
+    <div class="col s6">
+        <h6>Probabilidad</h6>
+        {% if object.probability == '1' %}
+            <div class="col s12 pt-1 pb-1 light-green accent-4 z-depth-1 mb-1">
+                <p class="white-text" style="font-weight: bold;">Improbable</p>
+            </div>
+        {% elif object.probability == '2' %}
+            <div class="col s12 pt-1 pb-1 green accent-4 z-depth-1 mb-1">
+                <p class="white-text" style="font-weight: bold;">Remoto</p>
+            </div>
+        {% elif object.probability == '3' %}
+            <div class="col s12 pt-1 pb-1 yellow accent-4 z-depth-1 mb-1">
+                <p class="white-text" style="font-weight: bold;">Ocasional</p>
+            </div>
+        {% elif object.probability == '4' %}
+            <div class="col s12 pt-1 pb-1  orange accent-4 z-depth-1 mb-1">
+                <p class="white-text" style="font-weight: bold;">Frecuente</p>
+            </div>
+        {% elif object.probability == '5' %}
+            <div class="col s12 pt-1 pb-1  red accent-4 z-depth-1 mb-1">
+                <p class="white-text" style="font-weight: bold;">Probable</p>
+            </div>            
+        {% endif %}
+    </div>
+
+    <div class="col s6">
+        <h6>Severidad</h6>
+        {% if object.consequence == '1' %}
+            <div class="col s12 pt-1 pb-1 light-green accent-4 z-depth-1 mb-1">
+                <p class="white-text" style="font-weight: bold;">Insignificante</p>
+            </div>
+        {% elif object.consequence == '2' %}
+            <div class="col s12 pt-1 pb-1 green accent-4 z-depth-1 mb-1">
+                <p class="white-text" style="font-weight: bold;">Menor</p>
+            </div>
+        {% elif object.consequence == '3' %}
+            <div class="col s12 pt-1 pb-1 yellow accent-4 z-depth-1 mb-1">
+                <p class="white-text" style="font-weight: bold;">Moderado</p>
+            </div>
+        {% elif object.consequence == '4' %}
+            <div class="col s12 pt-1 pb-1 red  orange accent-4 z-depth-1 mb-1">
+                <p class="white-text" style="font-weight: bold;">Grave</p>
+            </div>
+        {% elif object.consequence == '5' %}
+            <div class="col s12 pt-1 pb-1  red accent-4 z-depth-1 mb-1">
+                <p class="white-text" style="font-weight: bold;">Catastrofico</p>
+            </div>            
+        {% endif %}
+    </div>
+
+    <div class="col s12">
+        <h6>Nivel de riesgo</h6>
+        {% if object.level >= 0 and object.level <= 3 %}
+            <div class="col s12 pt-1 pb-1 light-green accent-4 z-depth-1 mb-1">
+                <p class="white-text" style="font-weight: bold;">Bajo</p>
+            </div>
+        {% elif object.level >= 4 and object.level <= 7 %}
+            <div class="col s12 pt-1 pb-1 yellow accent-4 z-depth-1 z-depth-1 mb-1">
+                <p class="white-text" style="font-weight: bold;">Moderado</p>
+            </div>
+        {% elif object.level >= 8 and object.level <= 14 %}
+            <div class="col s12 pt-1 pb-1 orange accent-4 z-depth-1 mb-1">
+                <p class="white-text" style="font-weight: bold;">Alto</p>
+            </div>
+        {% elif object.level >= 15 and object.level <= 25 %}
+            <div class="col s12 pt-1 pb-1  red accent-4 z-depth-1 mb-1">
+                <p class="white-text" style="font-weight: bold;">Extremo</p>
+            </div>                   
+        {% endif %}
+    </div>
+    <div class="row center mt-1">                                
+        <a href="#addLevelModal" class="modal-trigger">Cambiar</a>
+    </div>
+    {% endif %}
+</div>

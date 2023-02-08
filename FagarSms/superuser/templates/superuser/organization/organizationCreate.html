@@ -1,0 +1,113 @@
+{% extends '../AdminDashboard.html' %}
+{% load static %}
+{% block dashboard %}
+
+{% include './organizationHeader.html' %}
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+<div class="ml-1 mr-1">
+<div class="col s12 m8 center-by-margin card horizontal">
+    <form method="post" enctype="multipart/form-data" class="col s12 m9 center-by-margin mt-1">
+        {% csrf_token %}
+        <div class="row">
+            <div class="input-field col s12">
+                <select name="company_sms_manager" required="" id="id_company_sms_manager">
+                    {% if form.company_sms_manager.value == None %}
+                    <option value="" disabled selected>Debe seleccionar un gerente sms para crear la compañia</option>
+                    {% else %} 
+                        {% for manager in sms_managers %}
+                            {% if manager.user.id == form.company_sms_manager.value  %}
+                            <option value="{{ manager.user.id }}" disabled selected>{{ manager.user }}</option>
+                            {% endif %}
+                        {% endfor %}            
+                    {% endif %}
+                    {% for manager in sms_managers %}
+                        <option value="{{ manager.user.id }}" data-icon="{{ manager.photo.url }}">{{ manager.user }}</option>        
+                    {% endfor %}
+                </select>
+                <label>Gerente sms</label>
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <div class="input-field col s12">    
+                {{ form.name }}
+                <label for="id_name">Nomnbre del prestador de servicio:</label>
+            </div>
+        </div>
+        
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>Seleccionar Imagen</span>
+                {{ form.company_logo }}
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+        
+                
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.type_of_company }}
+                <label>Tipo de compañia</label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.phone }}
+                <label for="id_phone">Teléfono</label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.company_mail }}
+                <label for="id_company_mail">Email</label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.rif }}
+                <label for="id_rif">Rif</label>
+            </div>
+        </div>
+        
+        
+        
+        <div class="row center">
+            {% if 'company-update' in request.build_absolute_uri %}                                
+            <button type='submit' class="waves-effect waves-light btn-large white-text">
+                Guardar Cambios
+            </button>
+            {% else %}            
+            <button type='submit' class="waves-effect waves-light btn-large white-text">
+                Crear Prestador de Servicios
+            </button>
+            {% endif %}
+        </div>
+        </div>        
+        </form>
+        </div>
+        
+        
+</div>
+</div>
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let mailtext = document.querySelector("#id_company_mail");
+        mailtext.value=''
+    });
+</script>
+
+{% endblock %}

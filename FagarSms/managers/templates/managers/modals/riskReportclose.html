@@ -1,0 +1,13 @@
+{% load static %}
+<h4>¿Seguro que desea cerrar este reporte de riesgo?</h4>
+
+<form id="closeReportForm" style="text-align: center;" action="" method="post">    
+    {% csrf_token %}  
+    <inpunt id="toView" type="hidden"></inpunt>  
+        <button type='submit' class="waves-effect waves-light btn-large white-text">
+            Si&nbsp;
+        </button>
+        <button class="modal-close waves-effect waves-light btn-large white-text">
+            No
+        </button>
+</form>

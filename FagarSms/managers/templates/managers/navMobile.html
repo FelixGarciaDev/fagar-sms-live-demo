@@ -1,0 +1,65 @@
+<nav class="nav-mobile">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">Fagar-SMS</a>
+      <ul class="left">        
+        <li><a href="#" data-target="slide-out" class="sidenav-trigger" style="color: #5a5a5a"> <i class="material-icons">menu</i></a></li>        
+      </ul>
+    </div>
+</nav>
+
+<!--Left side panel on mobile-->
+<ul id="slide-out" class="sidenav menu-container">
+    <li>
+        <div class="green-material-square">
+          <div class="menu-logo"></div>
+        </div>
+    </li>
+    <li>
+        <div>
+          <ul class="collection principal-menu mt-0">
+            <li class="collection-item avatar principal-menu-item pl-0">
+              <a href="{% url 'managers:dashboard' %}" class="pl-0 pr-0">
+                <i class="material-icons circle blue">dashboard</i>
+                Inicio
+              </a>
+            </li>          
+            <li class="collection-item avatar principal-menu-item pl-0">
+              <a href="{% url 'managers:profile' %}" class="pl-0 pr-0">
+                <i class="material-icons circle blue">person</i>
+                Perfil
+              </a>
+            </li>
+            <li class="collection-item avatar principal-menu-item pl-0">
+              <a href="{% url 'managers:task-list' %}" class="pl-0 pr-0">
+                <i class="material-icons circle green">assignment</i>
+                Defensas
+              </a>
+            </li>
+            <li class="collection-item avatar principal-menu-item pl-0">
+              <a href="{% url 'managers:risk-report-list' %}" class="pl-0 pr-0">
+                <i class="material-icons circle orange">report_problem</i>
+                Reportes de Riesgo
+              </a>
+            </li>
+            <li class="collection-item avatar principal-menu-item pl-0">
+              <a href="{% url 'managers:incident-accident-list' %}" class="pl-0 pr-0">
+                <i class="material-icons circle red">report</i>
+                Incidentes y Accidentes
+              </a>
+            </li>            
+            <li class="collection-item avatar principal-menu-item pl-0">          
+              <a href="{% url 'managers:employee-list' %}" class="pl-0 pr-0">
+                <i class="material-icons circle cyan">group</i>
+                Empleados
+              </a>               
+            </li>
+            <li class="collection-item avatar principal-menu-item pl-0">
+              <a href="{% url 'landing:logout' %}" class="pl-0 pr-0">
+                <i class="material-icons circle red">exit_to_app</i>
+                Salir
+              </a>
+            </li>                      
+          </ul>
+        </div>        
+    </li>
+  </ul>

@@ -1,0 +1,42 @@
+{% extends 'landingBase.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row mb-0">
+    <!--Right side panel-->
+    <div id="airport-background" class="col s12 m12">
+        <div class="overlay white-text">        
+            <div class="container">
+                <div class="valign-wrapper">
+                    <div class="card horizontal medium center-by-margin col s10 m8">                        
+                        <div class="card-stacked">
+                          <div class="card-content text-center">
+                            <h4 class="mt-0 mb-2" style="color:black;">Para activar tu cuenta, debes establecer una contraseña</h4>                                                        
+                            <form action="{% url 'superuser:activation-change-password' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix" style="color: #5a5a5a">lock</i>                                    
+                                    <input type="password" name="password1" maxlength="50" minlength="8" required="" id="id_password1" placeholder="********" class="validate">
+                                    <label for="password">Contraseña</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix" style="color: #5a5a5a">lock</i>                                    
+                                    <input type="password" name="password2" maxlength="50" minlength="8" required="" id="id_password2" placeholder="********" class="validate">
+                                    <label for="password">Repita la contraseña</label>
+                                </div>
+                                {% for error in form.errors %}
+                                    <p class="text-danger">{{ error }}</p>
+                                {% endfor %}
+                                <button type='submit' class="waves-effect waves-light btn-large white-text">
+                                    Establecer Contraseña
+                                </button>                               
+                            </form>
+                          </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

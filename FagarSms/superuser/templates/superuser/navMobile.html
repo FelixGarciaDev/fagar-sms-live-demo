@@ -1,0 +1,46 @@
+<nav class="nav-mobile">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">Fagar-SMS</a>
+      <ul class="left">        
+        <li><a href="#" data-target="slide-out" class="sidenav-trigger" style="color: #5a5a5a"> <i class="material-icons">menu</i></a></li>        
+      </ul>
+    </div>
+</nav>
+
+<!--Left side panel on mobile-->
+<ul id="slide-out" class="sidenav menu-container">
+    <li>
+        <div class="green-material-square">
+          <div class="menu-logo"></div>
+        </div>
+    </li>
+    <li>
+        <div>
+            <ul class="collection principal-menu mt-0">                        
+                <li class="collection-item avatar principal-menu-item pl-0">
+                    <a href="{% url 'superuser:sms-manager-list' %}" style="padding:0;"> 
+                      <i class="material-icons circle">person</i>
+                      Gerentes sms
+                    </a>
+                  </li>
+                  <li class="collection-item avatar principal-menu-item pl-0">
+                    <a href="{% url 'superuser:company-list' %}" style="padding:0;">
+                      <i class="material-icons circle green">business</i>
+                      Prestadores de Servicio
+                    </a>
+                  </li>
+                  <li class="collection-item avatar principal-menu-item pl-0">
+                    <a href="{% url 'superuser:employee-list' %}" style="padding:0;">
+                      <i class="material-icons circle blue">group</i>
+                      Empleados
+                    </a>
+                  </li> 
+                  <li class="collection-item avatar principal-menu-item pl-0">
+                      <a href="{% url 'landing:logout' %}" style="padding:0;">
+                        <i class="material-icons circle red">exit_to_app</i>
+                        Salir
+                      </a>
+                  </li> 
+        </div>        
+    </li>
+  </ul>

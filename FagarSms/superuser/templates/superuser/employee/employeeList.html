@@ -1,0 +1,60 @@
+{% extends '../AdminDashboard.html' %}
+{% load static %}
+{% block dashboard %}
+
+{% include './employeeHeader.html' %}
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<div class="col s12 m8 center-by-margin">
+    <!--Floating Button-->
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top" data-tooltip="Nuevo Empleado" href="{% url 'superuser:employee-create' %}">
+            <i class="material-icons">person_add</i>
+        </a>
+    </div>
+    <!--List of sms managers-->
+    <ul class="collection with-header mb-mobile-for-floating-btn">
+        <li class="collection-header">
+            <div class="input-field">
+                <i class="material-icons prefix">search</i>        
+                <input type="text" placeholder="Busqueda por nombre, telefono, cedula o empresa">
+            </div>
+        </li>        
+        {% for instance in employees.all %}        
+        <li class="collection-item avatar">
+            <img src="{{ instance.photo.url }}" alt="" class="circle">
+            <span class="title">{{ instance.name }} {{ instance.last_name }}</span>
+            <p>{{ instance.user }}<br>
+                {{ instance.phone }}                
+            </p>
+            <a href="{% url 'superuser:employee-detail' instance.user.id %}" class="secondary-content tooltipped" data-position="top" data-tooltip="ver y editar">
+                <i class="material-icons">remove_red_eye</i>
+            </a>            
+            <a href="#!" class="secondary-content tooltipped" data-position="top" data-tooltip="Eliminar" style="top: 2.5rem;">
+                <i class="material-icons">delete</i>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+</div>
+
+<div class="col m2 hide-on-med-and-down">
+
+
+</div>
+{% if messages %}  
+    {% for message in messages %}
+        <script>
+            document.addEventListener('DOMContentLoaded', function toast() {
+                let message = "{{ message }}"
+                var toastHTML = '<span>'+message+'</span>';
+                M.toast({html: toastHTML, displayLength: 5000,classes: 'rounded'});
+                
+            });            
+        </script>
+    {% endfor %} 
+{% endif %}
+{% endblock %}

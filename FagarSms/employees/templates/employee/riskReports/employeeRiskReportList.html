@@ -1,0 +1,84 @@
+{% extends '../employeeDashboard.html' %}
+{% load static %}
+{% block dashboard %}
+
+{% include './riskReportHeader.html' %}
+
+    <div class="col m2 hide-on-med-and-down">
+
+    </div>
+    
+    <div class="col s12 m8 center-by-margin">
+        <!--Floating Button-->
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top" data-tooltip="Nuevo Reporte de Riesgo" href="{% url 'employees:risk-report-create' %}">
+                <i class="material-icons">add</i>
+            </a>
+        </div>
+        <!--List of risk reports-->
+        <ul class="collection with-header mb-mobile-for-floating-btn">
+            <li class="collection-header">
+                <form action='{% url 'employees:risk-report-search' %}' method='GET'>
+                    {% csrf_token %}
+                    <div class="input-field">
+                        <i class="material-icons prefix">search</i>        
+                        <input name="my_search" type="text" placeholder="Busqueda por descripcíon, fecha o quien hizo el reporte">
+                    </div>
+                </form>
+            </li>        
+            {% for instance in risk_reports.all %}
+            <li class="collection-item avatar">
+              <img src="{{ instance.photo1.url }}" alt="Image Not Found" class="circle" style="max-width: 3rem; position: absolute; left: 1rem; border: solid 1px darkgray;">
+              <span class="title">{{ instance.date }}</span>
+              <p class="colecction-elipsis-text">
+                {{ instance.place }} <br>        
+                {% if instance.type_of_risk == '1' %}
+                    Relacionado con vuelo<br>
+                {% endif %}
+                {% if instance.type_of_risk == '2' %}
+                    E.P.P.<br>
+                {% endif %}
+                {% if instance.type_of_risk == '3' %}
+                    Procedimientos<br>
+                {% endif %}
+                {% if instance.type_of_risk == '4' %}
+                    Mantenimiento Aeronáutico<br>
+                {% endif %}
+                {% if instance.type_of_risk == '5' %}
+                    FOD<br>
+                {% endif %}
+                {% if instance.type_of_risk == '6' %}
+                    Orden y limpieza<br>
+                {% endif %}
+                {% if instance.type_of_risk == '7' %}
+                    Acto inseguro<br>
+                {% endif %}
+                {% if instance.type_of_risk == '8' %}
+                    Otros<br>
+                {% endif %}
+                {{ instance.description }}<br>
+              </p>
+              <a href="{% url 'employees:risk-report-detail' instance.id %}" class="secondary-content"><i class="material-icons">remove_red_eye</i></a>
+            </li>
+            {% endfor %}
+          </ul>
+    </div>
+    
+    <div class="col m2 hide-on-med-and-down">
+    
+    </div>
+
+{% if messages %}  
+    {% for message in messages %}
+        <script>
+            document.addEventListener('DOMContentLoaded', function toast() {
+                let message = "{{ message }}"
+                var toastHTML = '<span>'+message+'</span>';
+                M.toast({html: toastHTML, displayLength: 5000,classes: 'rounded'});
+                
+            });            
+        </script>
+    {% endfor %} 
+{% endif %}
+
+{% endblock %}

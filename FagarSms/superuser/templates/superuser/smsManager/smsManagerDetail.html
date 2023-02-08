@@ -1,0 +1,100 @@
+{% extends '../AdminDashboard.html' %}
+{% load static %}
+{% block dashboard %}
+
+{% include './smsManagerHeader.html' %}
+
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<div class="col s12 m8 center-by-margin">
+<!--SMS MANAGER BASIC DATA-->
+    <div class="row" style="width: 100%;">        
+        <div class="col s12">
+            <div class="row text-center">
+                <h4>Información Basica</h4>
+            </div>    
+            <div class="card horizontal">                        
+                <div class="card-image">
+                    <img src="{{ object.photo.url }}" class="profile-pic-medium mt-1 mb-1">                            
+                    <button data-target="SmsMangerProfilePicFormModal" class="btn-edit-profile-pic btn-small btn-floating waves-effect waves-light grey darken-2 modal-trigger"><i class="material-icons">add_a_photo</i></button>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h3>{{ object.name }} {{ object.last_name }}</h3>
+                        <div class="divider"></div>
+                        <br>
+                        <p>{{ object.user.email }}</p>
+                        <p>{{ object.phone }}</p>
+                        <p>{{ object.user.id }}</p>                                            
+                    </div>                
+                </div>
+                <a class="btn-large btn-floating halfway-fab waves-effect waves-light green btn modal-trigger" href="#SmsMangerProfileFormModal"><i class="material-icons">edit</i></a>
+            </div>
+        </div>
+    </div>
+<!--COMPANY DATA-->
+    <div class="row text-center">
+        <h4>Gestionando</h4>
+    </div>
+    <ul class="collection" style="margin-right: 24px;">        
+        {% for company in object.managed_by.all %}
+        <li class="collection-item avatar">
+            <img src="{{ company.company_logo.url }}" alt="" class="circle">
+            <span class="title">{{ company.name }}</span>
+            <p>
+                <!--Firts Line Tipo de compañia-->
+                {% if instance.type_of_company == '1' %}
+                    Aeropuerto<br>
+                {% endif %}
+                {% if instance.type_of_company == '2' %}
+                    Aerolinea<br>
+                {% endif %}
+                {% if instance.type_of_company == '3' %}
+                    Ciac<br>
+                {% endif %}
+                {% if instance.type_of_company == '4' %}
+                    Omac<br>
+                {% endif %}
+                <!--Second Line Telefono-->
+                Telefono: {{ company.phone }}<br>
+                <!--Third Line Email-->
+                Email: {{ company.company_mail }}<br>
+            </p>
+            <a href="{% url 'superuser:company-detail' company.id %}" class="secondary-content"><i class="material-icons">remove_red_eye</i></a>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<!-- Modal Formulario datos basicos -->
+<div id="SmsMangerProfileFormModal" class="modal">
+    <div class="modal-content" id="update-profile-url">
+        {% include './Modals/smsMangerUpdateProfile.html' %}
+    </div>
+</div>
+<!-- Modal Formulario foto de perfil -->
+<div id="SmsMangerProfilePicFormModal" class="modal">
+    <div class="modal-content" id="update-profile-pic-url">
+        {% include './Modals/smsMangerUpdateProfilePicture.html' %}
+    </div>
+</div>
+<!--SCRIPTS-->
+<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script type="text/javascript">
+        
+    $( document ).ready(function() {        
+        $('.modal').modal();        
+        $('#update-profile-url').load("{% url 'superuser:sms-manager-update-profile' object.user.id %}");             
+        $('#update-profile-pic-url').load("{% url 'superuser:sms-manager-update-profile-pic' object.user.id %}");
+    });
+</script>
+
+{% endblock%}

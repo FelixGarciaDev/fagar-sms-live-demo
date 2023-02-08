@@ -1,0 +1,51 @@
+{% extends '../managerDashboard.html' %}
+{% load static %}
+{% block dashboard %}
+
+{% include './employeeHeader.html' %}
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+<div class="ml-1 mr-1">
+<div class="col s12 m8 center-by-margin card horizontal">
+    {% include '../userCreationForm.html' %}
+</div>
+</div>
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<div class="row">
+<div class="col s4"></div>
+<div class="col s4">
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">   
+
+
+    <div class="row">
+        <div class="input-field col s12">    
+            {{ form.email }}
+            <label for="email">Email</label>
+        </div>
+    </div>        
+   
+    
+    <div class="row center">                    
+        <input type='submit' class="waves-effect waves-light btn-large white-text" value='Crear Empleado'>                    
+    </div>
+    
+</form>
+</div>
+
+<div class="col s4"></div>
+</div>
+<!--SCRIPTS-->
+<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script>
+    $(document).ready(function(){
+        $('select').formSelect();
+    });        
+</script>
+{% endblock %}

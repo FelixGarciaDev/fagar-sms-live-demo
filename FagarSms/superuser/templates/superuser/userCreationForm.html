@@ -1,0 +1,74 @@
+<form method="post" enctype="multipart/form-data" class="col s12 m9 center-by-margin">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">          
+    <div class="row">
+        <div class="input-field col s12">
+            <i class="material-icons prefix" style="color: #5a5a5a">email</i>    
+            {{ form.email }}
+            <label for="id_email">Email</label>
+        </div>
+    </div>
+
+    {% if 'employee-create' in request.build_absolute_uri %}                                    
+    <div class="row">
+        <div class="input-field col s12">
+            <select name="companys" required="" id="id_companys" tabindex="-1">            
+                <option value="" disabled selected>Debe seleccionar una empresa</option>
+                {% for company in form.companys.field.queryset %}
+                    <option value="{{ company.id }}" data-icon="{{ company.company_logo.url }}"> {{ company.name }}</option>        
+                {% endfor %}
+            </select>
+            <label>Prestador de servicios</label>
+        </div>
+    </div>
+    {% endif %}    
+
+    <div class="row center">
+        {% for error in form.errors %}
+            <p class="text-danger">{{ error }}</p>
+        {% endfor %}
+        {% if 'sms-manager-create' in request.build_absolute_uri %}                                    
+        <button type='submit' class="waves-effect waves-light btn-large white-text">
+            Crear Geremte SMS
+        </button>
+        {% endif %}
+        {% if 'employee-create' in request.build_absolute_uri %}                                    
+        <button type='submit' class="waves-effect waves-light btn-large white-text">
+            Crear Empleado
+        </button>
+        {% endif %}
+    </div>
+    </div>
+    <div class="col s4"></div>
+</form>
+
+<script> 
+    var pass1 = document.getElementById("id_password1"); 
+    var pass2 = document.getElementById("id_password2");
+
+    /* Function to generate combination of password */ 
+    function generateP() { 
+        var pass = ''; 
+        var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +  
+                'abcdefghijklmnopqrstuvwxyz0123456789@#$'; 
+          
+        for (i = 1; i <= 8; i++) { 
+            var char = Math.floor(Math.random() 
+                        * str.length + 1); 
+              
+            pass += str.charAt(char) 
+        } 
+          
+        return pass; 
+    } 
+
+    function gfg_Run() {                                
+        pass1.value = generateP(); 
+        pass2.value = pass1.value
+        console.log(pass1.value)
+        console.log(pass2.value)
+        M.updateTextFields();
+    }
+
+     
+</script> 

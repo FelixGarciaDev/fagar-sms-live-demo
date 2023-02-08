@@ -1,0 +1,102 @@
+{% load static %}
+<div class="col s12">
+    <div class="card horizontal mobile-chart">      
+        <canvas id="BarRiskReportCanvas"></canvas>
+
+        <script>       
+            var MONTHS = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviebre', 'Diciembre'];
+            var color = Chart.helpers.color;
+            var barChartData1 = {
+                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                datasets: [{
+                    label: 'Bajo',
+                    backgroundColor: window.chartColors.green,
+                    data: [
+                        Math.round({{ low_on_janaury }}),
+                        Math.round({{ low_on_february }}),
+                        Math.round({{ low_on_march }}),
+                        Math.round({{ low_on_april }}),
+                        Math.round({{ low_on_may }}),
+                        Math.round({{ low_on_june }}),
+                        Math.round({{ low_on_july }}),
+                        Math.round({{ low_on_august }}),
+                        Math.round({{ low_on_september }}),
+                        Math.round({{ low_on_october }}),
+                        Math.round({{ low_on_november }}),
+                        Math.round({{ low_on_december }}),
+                    ]
+                }, {
+                    label: 'Moderado',
+                    backgroundColor: window.chartColors.yellow,
+                    data: [
+                        Math.round({{ moderate_on_janaury }}),
+                        Math.round({{ moderate_on_february }}),
+                        Math.round({{ moderate_on_march }}),
+                        Math.round({{ moderate_on_april }}),
+                        Math.round({{ moderate_on_may }}),
+                        Math.round({{ moderate_on_june }}),
+                        Math.round({{ moderate_on_july }}),
+                        Math.round({{ moderate_on_august }}),
+                        Math.round({{ moderate_on_september }}),
+                        Math.round({{ moderate_on_october }}),
+                        Math.round({{ moderate_on_november }}),
+                        Math.round({{ moderate_on_december }}),
+                    ]
+                }, {
+                    label: 'Alto',
+                    backgroundColor: window.chartColors.orange,
+                    data: [
+                        Math.round({{ high_on_janaury }}),
+                        Math.round({{ high_on_february }}),
+                        Math.round({{ high_on_march }}),
+                        Math.round({{ high_on_april }}),
+                        Math.round({{ high_on_may }}),
+                        Math.round({{ high_on_june }}),
+                        Math.round({{ high_on_july }}),
+                        Math.round({{ high_on_august }}),
+                        Math.round({{ high_on_september }}),
+                        Math.round({{ high_on_october }}),
+                        Math.round({{ high_on_november }}),
+                        Math.round({{ high_on_december }}),
+                    ]
+                },{
+                    label: 'Extremo',
+                    backgroundColor: window.chartColors.red,
+                    data: [
+                        Math.round({{ extreme_on_janaury }}),
+                        Math.round({{ extreme_on_february }}),
+                        Math.round({{ extreme_on_march }}),
+                        Math.round({{ extreme_on_april }}),
+                        Math.round({{ extreme_on_may }}),
+                        Math.round({{ extreme_on_june }}),
+                        Math.round({{ extreme_on_july }}),
+                        Math.round({{ extreme_on_august }}),
+                        Math.round({{ extreme_on_september }}),
+                        Math.round({{ extreme_on_october }}),
+                        Math.round({{ extreme_on_november }}),
+                        Math.round({{ extreme_on_december }}),
+                    ]
+                },{
+                    label: 'Por Asignar',
+                    backgroundColor: window.chartColors.grey,
+                    data: [
+                        Math.round({{ no_level_on_janaury }}),
+                        Math.round({{ no_level_on_february }}),
+                        Math.round({{ no_level_on_march }}),
+                        Math.round({{ no_level_on_april }}),
+                        Math.round({{ no_level_on_may }}),
+                        Math.round({{ no_level_on_june }}),
+                        Math.round({{ no_level_on_july }}),
+                        Math.round({{ no_level_on_august }}),
+                        Math.round({{ no_level_on_september }}),
+                        Math.round({{ no_level_on_october }}),
+                        Math.round({{ no_level_on_november }}),
+                        Math.round({{ no_level_on_december }}),
+                    ]
+                }                ]
+            };    
+        </script>
+
+
+    </div>
+</div>

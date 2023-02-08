@@ -1,0 +1,7 @@
+{% autoescape off %}
+Bienvenido a Fagar-SMS
+
+Porfavor haz click en el siguiente link para confirmar y activar tu cuenta:
+
+http://{{ domain }}{% url 'superuser:sms-manager-activation' uid64=uid token=token %}
+{% endautoescape %}

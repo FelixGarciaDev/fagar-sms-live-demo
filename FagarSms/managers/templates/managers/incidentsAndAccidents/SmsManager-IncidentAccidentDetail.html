@@ -1,0 +1,77 @@
+{% extends '../managerDashboard.html' %}
+{% load static %}
+{% block dashboard %}
+
+{% include './incidentAccidentHeader.html' %}
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<div class="col s12 m8 center-by-margin">
+    <div class="card">
+        <div class="card-image">
+            <div class="carousel carousel-slider center">        
+                <div class="carousel-item white-text" href="#one!" style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url({{ object.photo1.url }})">
+                  <div class="indicators" style="position: relative;">
+                    {% include './datePlaceType.html' %}
+                  </div>
+                </div>
+                <div class="carousel-item white-text" href="#two!" style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url({{ object.photo2.url }})">
+                    <div class="indicators" style="position: relative;">
+                        {% include './datePlaceType.html' %}
+                    </div>
+                </div>
+                <div class="carousel-item white-text" href="#three!" style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url({{ object.photo3.url }})">
+                    <div class="indicators" style="position: relative;">
+                        {% include './datePlaceType.html' %}
+                    </div>
+                </div>
+                <div class="carousel-item white-text" href="#four!" style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url({{ object.photo4.url }})">
+                    <div class="indicators" style="position: relative;">
+                        {% include './datePlaceType.html' %}
+                    </div>
+                </div>
+                <div class="carousel-item white-text" href="#four!" style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url({{ object.photo5.url }})">
+                    <div class="indicators" style="position: relative;">
+                        {% include './datePlaceType.html' %}
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="card-content">
+            <!--WHO REPORTED-->
+            <h5>Reportado por:</h5>            
+            <ul class="collection">
+                <li class="collection-item avatar">
+                  <img src="{{ reporter.photo.url }}" alt="" class="circle">
+                  <span class="title">{{ reporter.name }} {{ reporter.last_name }}</span>
+                  <p>
+                    {{ reporter.user }} <br>
+                    {{ reporter.phone }}  
+                  </p>
+                  {% if sms_manager == True %}
+                        <a href="{% url 'managers:profile' %}" class="secondary-content"><i class="material-icons">remove_red_eye</i></a>                
+                    {% endif %}
+                    {% if employee == True %}
+                        <a href="{% url 'managers:employee-detail' reporter.user_id %}" class="secondary-content"><i class="material-icons">remove_red_eye</i></a>                
+                    {% endif %}
+                </li>
+            </ul>
+
+            <div class="divider"></div>
+            <!--DESCRIPTION-->
+            <h5>Descripción:</h5>
+            <p>{{ object.description }}</p><br>            
+        </div>        
+    </div>
+
+</div>
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+
+
+{% endblock %}

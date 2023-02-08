@@ -1,0 +1,11 @@
+{% load static %}
+<h4>¿Seguro que desea cambiar el estado de la tarea?</h4>
+
+<form id="updateTaskStatusForm" style="text-align: center;" action="" method="post">    
+    {% csrf_token %}
+        <inpunt id="toView" type="hidden"></inpunt>
+        <button type='submit' class="waves-effect waves-light btn-large white-text">
+            Si
+        </button>        
+        <a class="waves-effect waves-light btn-large modal-close">No</a>
+</form>

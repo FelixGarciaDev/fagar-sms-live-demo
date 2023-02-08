@@ -1,0 +1,33 @@
+<div class="col m3 left-side pl-0 pr-0 menu-container">
+    <div class="green-material-square">
+      <div class="menu-logo"></div>
+    </div>
+    <div>
+      <ul class="collection principal-menu mt-0">          
+        <li class="collection-item avatar principal-menu-item">
+          <a href="{% url 'superuser:sms-manager-list' %}"> 
+            <i class="material-icons circle">person</i>
+            Gerentes sms
+          </a>
+        </li>
+        <li class="collection-item avatar principal-menu-item">
+          <a href="{% url 'superuser:company-list' %}">
+            <i class="material-icons circle green">business</i>
+            Prestadores de Servicio
+          </a>
+        </li>
+        <li class="collection-item avatar principal-menu-item">
+          <a href="{% url 'superuser:employee-list' %}">
+            <i class="material-icons circle blue">group</i>
+            Empleados
+          </a>
+        </li> 
+        <li class="collection-item avatar principal-menu-item">
+          <a href="{% url 'landing:logout' %}">
+            <i class="material-icons circle red">exit_to_app</i>
+            Salir
+          </a>
+        </li>                     
+      </ul>
+    </div>        
+</div> 

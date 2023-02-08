@@ -1,0 +1,64 @@
+{% extends './employeeDashboard.html' %}
+{% load static %}
+{% block dashboard %}
+
+<div class="col m1 hide-on-med-and-down">
+
+</div>
+
+<div class="col s12 m10 center-by-margin">
+    <!--company info -->
+    <div class="col s12 m4">
+        <div class="card indicator-card horizontal grey lighten-5 z-depth-1 valign-wrapper">                        
+            <div class="card-image">
+                <img src="{{ company.company_logo.url }}" class="profile-pic-small mt-1 mb-1 ml-1">                        
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p>{{ company.name }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--employee info -->
+    <div class="col s12 m4">
+        <div class="card indicator-card horizontal grey lighten-5 z-depth-1 valign-wrapper">                        
+            <div class="card-image">
+                <img src="{{ employee.photo.url }}" class="profile-pic-small mt-1 mb-1 ml-1">                        
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p>{{ employee.name }} {{ employee.last_name }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--reports info-->
+    <div class="col s12 m4">
+        <div class="card indicator-card horizontal grey lighten-5 z-depth-1 valign-wrapper">                                    
+            <div class="card-stacked">
+                <div class="card-content">
+                    <h6>Total de reportes</h6>
+                    <p>reportes de riesgo: {{ totalRiskReports }}</p>
+                    <p>reportes de incidentes: {{ totalIncidentes }}</p>
+                    <p>Tareas pendientes: {{ uncompleted }} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col m1 hide-on-med-and-down">
+
+</div>
+
+<script>/*
+    document.addEventListener('DOMContentLoaded', function () {
+        activeLi = document.querySelector('li#item-dashboard').classList.add('active');;
+        activeLiIcon = document.querySelector('li#item-dashboard a i').style.color = "#26a69a !important;";
+        activeLiIcon = document.querySelector('li#item-dashboard a i').style.backgroundColor = "#fff !important;"
+        console.log(activeLiIcon);
+    });*/
+</script>
+
+{% endblock %}

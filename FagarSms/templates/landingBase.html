@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--GoogleFont-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--MaterializeCss-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %} "  media="screen,projection"/>        
+    <!--CustomCSs-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/landing.css' %} "  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/margins.css' %} "  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/paddings.css' %} "  media="screen,projection"/>    
+    <link type="text/css" rel="stylesheet" href="{% static 'css/util.css' %} "  media="screen,projection"/>    
+    <link type="text/css" rel="stylesheet" href="{% static 'css/newstyles.css' %} "  media="screen,projection"/>        
+    <title>Fagar-sms</title>
+</head>
+<body>
+  {% block content %}  
+
+  {% endblock %}
+  <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      let options = {}
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems, options);
+      //
+      let optionsToolTips = {}
+      var tooltips = document.querySelectorAll('.tooltipped');
+      var instances = M.Tooltip.init(tooltips, optionsToolTips);
+      //
+      let optionsSelect = {}
+      var selects = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(selects, optionsSelect);
+      //
+      var modals = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(modals, options);
+    });
+  </script>
+</body>
+</html>

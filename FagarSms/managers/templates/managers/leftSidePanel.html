@@ -1,0 +1,52 @@
+<div class="col m3 left-side pl-0 pr-0 menu-container">
+    <div class="green-material-square">        
+      <div class="menu-logo"></div>
+    </div>
+    <div>
+      <ul class="collection principal-menu mt-0 mb-0">
+        <li id="item-dashboard" class="collection-item avatar principal-menu-item">
+          <a href="{% url 'managers:dashboard' %}">
+            <i class="material-icons circle ">dashboard</i>
+            Inicio
+          </a>
+        </li>          
+        <li id="item-profile" class="collection-item avatar principal-menu-item">
+          <a href="{% url 'managers:profile' %}">
+            <i class="material-icons circle ">person</i>
+            Perfil
+          </a>
+        </li>
+        <li id="item-tasks" class="collection-item avatar principal-menu-item">
+          <a href="{% url 'managers:task-list' %}" class="pl-0">
+            <i class="material-icons circle ">assignment</i>
+            Defensas
+          </a>
+        </li>          
+        <li id="item-reports" class="collection-item avatar principal-menu-item">
+          <a href="{% url 'managers:risk-report-list' %}">
+            <i class="material-icons circle orange">report_problem</i>
+            Reportes de Riesgo
+          </a>
+        </li>
+        <li id="item-incidents-accidents" class="collection-item avatar principal-menu-item">
+          <a href="{% url 'managers:incident-accident-list' %}">
+            <i class="material-icons circle ">report</i>
+            Incidentes y Accidentes
+          </a>
+        </li>        
+        <!--EMPLEADOS-->
+        <li id="item-employees" class="collection-item avatar principal-menu-item">          
+          <a href="{% url 'managers:employee-list' %}">
+            <i class="material-icons circle ">group</i>
+            Empleados
+          </a>               
+        </li>  
+        <li id="item-logout" class="collection-item avatar principal-menu-item">
+          <a href="{% url 'landing:logout' %}">
+            <i class="material-icons circle red">exit_to_app</i>
+            Salir
+          </a>
+      </li>    
+      </ul>
+    </div>        
+</div> 

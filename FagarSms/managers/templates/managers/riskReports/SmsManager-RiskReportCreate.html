@@ -1,0 +1,144 @@
+{% extends '../managerDashboard.html' %}
+{% load static %}
+{% block dashboard %}
+
+{% include './riskReportHeader.html' %}
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<div class="col s12 m8 center-by-margin card horizontal">
+    <form method="post" enctype="multipart/form-data" class="col s12 m9 center-by-margin">
+        {% csrf_token %}
+        
+        <div class="row">
+            <div class="input-field col s12">    
+                <input type="text" name="date" required="" id="id_date" class="datepicker">
+                <label for="id_date">Selecciona una fecha</label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="input-field col s12">    
+                {{ form.place }}
+                <label for="id_place">Lugar:</label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.type_of_risk }}
+                <label>Tipo de riesgo:</label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col s12">        
+                <label>Opcionalmente puede agregar hasta 5 fotos asociadas al reporte de riesgo</label>
+            </div>
+        </div>
+        
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>Foto 1:</span>
+                <input type="file" name="photo1" accept="image/*" id="id_photo1">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+        
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>Foto 2:</span>
+                <input type="file" name="photo2" accept="image/*" id="id_photo2">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+        
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>Foto 3:</span>
+                <input type="file" name="photo3" accept="image/*" id="id_photo3">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+        
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>Foto 4:</span>
+                <input type="file" name="photo4" accept="image/*" id="id_photo4">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+        
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>Foto 5:</span>
+                <input type="file" name="photo5" accept="image/*" id="id_photo5">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.description }}
+                <label for="id_description">Descripción:</label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.recmendations }}
+                <label for="id_recmendations">Recomendaciones:</label>
+            </div>
+        </div>
+        
+        <div class="row center">                                
+            <button type='submit' class="waves-effect waves-light btn-large white-text">
+                Crear Reporte de Riesgo
+            </button>
+        </div>
+        </div>    
+    </form>
+</div>
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+
+<!--SCRIPTS-->
+<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script>
+    $(document).ready(function(){
+        $('select').formSelect();
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            i18n: {
+                months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+                weekdays: ["Domingo","Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+                weekdaysShort: ["Dom","Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+                weekdaysAbbrev: ["D","L", "M", "M", "J", "V", "S"],
+                today: 'Hoy',
+		        clear: 'Limpiar',
+		        close: 'Ok',
+                cancel: 'Cancelar',
+		        labelMonthNext: 'Siguiente mes',
+			    labelMonthPrev: 'Mes anterior',			    
+            }
+        });                
+    });        
+</script>
+
+{% endblock %}

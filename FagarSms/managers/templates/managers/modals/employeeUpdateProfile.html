@@ -1,0 +1,31 @@
+{% load static %}
+<form action="{% url 'managers:employee-update-profile' object.user.id %}" method="post">
+    {% csrf_token %}        
+    <div class="row">
+        <div class="input-field col s12">    
+            {{ form.name }}
+            <label for="id_name">Nombre:</label>
+        </div>
+    </div>
+                    
+    <div class="row">
+        <div class="input-field col s12">
+            {{ form.last_name }}
+            <label for="id_last_name">Apellido:</label>
+        </div>
+    </div>
+            
+    <div class="row">
+        <div class="input-field col s12">
+            {{ form.phone }}
+            <label for="id_phone">Telefono:</label>
+        </div>
+    </div>
+    <button type='submit' class="waves-effect waves-light btn-large white-text">
+        Guardar
+    </button>
+</form>
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+<script type="text/javascript">        
+        M.updateTextFields();
+</script>

@@ -1,0 +1,186 @@
+{% extends '../managerDashboard.html' %}
+{% load static %}
+{% block dashboard %}
+
+{% include './riskReportHeader.html' %}
+
+<!--RISKREPORT BASIC DATA-->
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<div class="col s12 m8 center-by-margin">
+    <div class="card">
+        <div class="card-image">
+            <div class="carousel carousel-slider center">        
+                <div class="carousel-item white-text" href="#one!" style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url({{ object.photo1.url }})">
+                  <div class="indicators" style="position: relative;">
+                    {% include './datePlaceType.html' %}
+                  </div>
+                </div>
+                <div class="carousel-item white-text" href="#two!" style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url({{ object.photo2.url }})">
+                    <div class="indicators" style="position: relative;">
+                        {% include './datePlaceType.html' %}
+                    </div>
+                </div>
+                <div class="carousel-item white-text" href="#three!" style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url({{ object.photo3.url }})">
+                    <div class="indicators" style="position: relative;">
+                        {% include './datePlaceType.html' %}
+                    </div>
+                </div>
+                <div class="carousel-item white-text" href="#four!" style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url({{ object.photo4.url }})">
+                    <div class="indicators" style="position: relative;">
+                        {% include './datePlaceType.html' %}
+                    </div>
+                </div>
+                <div class="carousel-item white-text" href="#four!" style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url({{ object.photo5.url }})">
+                    <div class="indicators" style="position: relative;">
+                        {% include './datePlaceType.html' %}
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="card-content">
+            {% if object.is_open == False %}                        
+            <div class="row center">                   
+                <h3>Reporte Cerrado</h3>    
+                <a href="#closeReportModal" onclick="loadview('{{ object.id }}')" class="btn modal-trigger">Reabrir Reporte</a>
+            </div>
+            <div class="divider"></div>
+            {% endif %}            
+            <!--WHO REPORTED-->
+            <h5>Reportado por:</h5>            
+            <ul class="collection">
+                <li class="collection-item avatar">
+                  <img src="{{ reporter.photo.url }}" alt="" class="circle">
+                  <span class="title">{{ reporter.name }} {{ reporter.last_name }}</span>
+                  <p>
+                    {{ reporter.user }} <br>
+                    {{ reporter.phone }}  
+                  </p>
+                  {% if sms_manager == True %}
+                        <a href="{% url 'managers:profile' %}" class="secondary-content"><i class="material-icons">remove_red_eye</i></a>                
+                    {% endif %}
+                    {% if employee == True %}
+                        <a href="{% url 'managers:employee-detail' reporter.user_id %}" class="secondary-content"><i class="material-icons">remove_red_eye</i></a>                
+                    {% endif %}
+                </li>
+            </ul>
+
+            <div class="divider"></div>
+            <!--DESCRIPTION-->
+            <h5>Decripción:</h5>
+            <p>{{ object.description }}</p><br>
+            <div class="divider"></div>
+            <!--RECOMENDATIONS-->
+            <h5>Recomendaciones:</h5>
+            <p>{{ object.recmendations }}</p><br>
+            <div class="divider"></div>
+            <!--STATUS AND LEVEL-->
+            <h5>Nivel de Riesgo y Defensas:</h5>
+            {% include './riskReportLevel.html'%}                                               
+            {% if object.level_of_risk != '' and object.is_open == True %}            
+            <!--LEVEL-->
+            
+                <h5>Puede asignar defensas</h5>
+                <div class="col s12">                    
+                    <ul class="collection with-header mb-mobile-for-floating-btn">                               
+                        {% for task in tasks %}        
+                        <li class="collection-item avatar">                                                        
+                            {% if task.manager.name is not None %}
+                                <img src="{{ task.manager.photo.url }}" alt="" class="circle">
+                                <span class="title">{{ task.manager.name }}</span>
+                            {% endif %}
+                            {% if task.employee.name is not None %}
+                                <img src="{{ task.employee.photo.url }}" alt="" class="circle">
+                                <span class="title">{{ task.employee.name }}</span>
+                            {% endif %}
+                            <p>{{ task.taskDescription }}</p>
+                            {% if task.completedTask == False %}
+                            <a class="secondary-content tooltipped" data-position="top" data-tooltip="Pendiente">
+                                <i class="material-icons">assignment_late</i>
+                            </a>                            
+                            {% endif %}
+                            {% if task.completedTask == True %}
+                            <a class="secondary-content tooltipped" data-position="top" data-tooltip="Completada">
+                                <i class="material-icons">assignment_turned_in</i>
+                            </a>                            
+                            {% endif %}
+                          </li>
+                        {% endfor %}
+                      </ul>
+                <a href="#addTaskModal" class="btn-floating waves-effect waves-light red modal-trigger tooltipped" data-position="top" data-tooltip="Añadir Defensa" style="float: right;"><i class="material-icons">add</i></a>
+                <div class="divider mt-5 mb-2"></div>
+                </div>                            
+            {% endif %}           
+            <!--OPER O CLOSE-->
+            {% if object.is_open == True %}            
+            <div class="row center">  
+                 
+                {% if allTasksCompleted == False %}
+                    <a class="btn disabled tooltipped" data-position="top" data-tooltip="Deben completarse todas las defensas">Cerrar reporte de riesgo</a>
+                {% endif %}
+                {% if allTasksCompleted == True %}
+                    <a href="#closeReportModal" onclick="loadview('{{ object.id }}')" class="btn modal-trigger">Cerrar reporte de riesgo</a>                    
+                {% endif %}
+                
+            </div>
+            {% endif %}
+        </div>        
+    </div>
+
+</div>
+
+<div class="col m2 hide-on-med-and-down">
+
+</div>
+
+<!-- Modal for level of risk-->
+<div id="addLevelModal" class="modal">
+    <div class="modal-content" id="update-level-url">
+        {% include '../modals/riskReportAddLevel.html' %}
+    </div>
+</div>
+
+<!-- Modal para añadir tareas-->
+<div id="addTaskModal" class="modal">
+    <div class="modal-content mt-2 mb-2" id="update-task-url">
+        {% include '../modals/riskReportAddTask.html' %}
+    </div>
+</div>
+
+<!-- Modal para cerrar reporte de riesgo-->
+<div id="closeReportModal" class="modal">
+    <div class="modal-content mt-2 mb-2" id="close-report-url">
+        {% include '../modals/riskReportclose.html' %}
+    </div>
+</div>
+
+<!--SCRIPTS-->
+{% if messages %}  
+    {% for message in messages %}
+        <script>
+            document.addEventListener('DOMContentLoaded', function toast() {
+                let message = "{{ message }}"
+                var toastHTML = '<span>'+message+'</span>';
+                M.toast({html: toastHTML, displayLength: 5000,classes: 'rounded'});
+                
+            });            
+        </script>
+    {% endfor %} 
+{% endif %}
+<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script type="text/javascript">        
+    $( document ).ready(function() {        
+        $('.modal').modal();
+        $(".modal").css("overflow", "visible");        
+        $('#update-task-url').load("{% url 'managers:risk-report-task' object.id %}");
+    });
+
+    function loadview(reportid) {            
+        let actionUrl= '/sms-manager/dashboard/risk-report-close/'+reportid+'/'
+        document.getElementById("closeReportForm").action = actionUrl;    
+    }    
+</script>
+
+{% endblock %}
