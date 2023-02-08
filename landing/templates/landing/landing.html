@@ -22,23 +22,23 @@
         <div>
             <ul class="collection principal-menu mt-0">                        
               <li class="collection-item avatar principal-menu-item pl-0">
-                <a href="#!" class="pl-0 pr-0">
-                  <i class="material-icons circle black">phone_iphone</i>
-                  Aplicación Móvil
+                <a class="modal-trigger pl-0 pr-0" href="#modalFAQ">
+                  <i class="material-icons circle cyan">speaker_notes</i>
+                  Preguntas Frecuentes
                 </a>
-              </li>
+              </li>                         
               <li class="collection-item avatar principal-menu-item pl-0">
-                <a href="#!" class="pl-0 pr-0">
+                <a class="modal-trigger pl-0 pr-0" href="#modalContact">
                   <i class="material-icons circle red">contacts</i>
                   Contacto
                 </a>
               </li>
               <li class="collection-item avatar principal-menu-item pl-0">
-                <a href="#!" class="pl-0 pr-0">
-                  <i class="material-icons circle cyan">speaker_notes</i>
-                  Preguntas Frecuentes
+                <a class="modal-trigger pl-0 pr-0" href="#modalPhoneApp">
+                  <i class="material-icons circle black">phone_iphone</i>
+                  Aplicación Móvil
                 </a>
-              </li>           
+              </li>   
             </ul>
         </div>        
     </li>
@@ -58,11 +58,11 @@
         <div>
             <ul class="collection principal-menu mt-0">
               <li class="collection-item avatar principal-menu-item">
-                <a class="modal-trigger" href="#modalPhoneApp">
-                  <i class="material-icons circle black">phone_iphone</i>
-                  Aplicación Móvil
+                <a class="modal-trigger" href="#modalFAQ">
+                  <i class="material-icons circle cyan">speaker_notes</i>
+                  Preguntas Frecuentes
                 </a>
-              </li>
+              </li>                         
               <li class="collection-item avatar principal-menu-item">
                 <a class="modal-trigger" href="#modalContact">
                   <i class="material-icons circle red">contacts</i>
@@ -70,11 +70,11 @@
                 </a>
               </li>
               <li class="collection-item avatar principal-menu-item">
-                <a class="modal-trigger" href="#modalFAQ">
-                  <i class="material-icons circle cyan">speaker_notes</i>
-                  Preguntas Frecuentes
+                <a class="modal-trigger" href="#modalPhoneApp">
+                  <i class="material-icons circle black">phone_iphone</i>
+                  Aplicación Móvil
                 </a>
-              </li>           
+              </li>
             </ul>
         </div>        
     </div>    
@@ -85,8 +85,7 @@
             <div id="welcome" class="container">
               <div class="valign-wrapper">
                 <row>
-                  <h1>Gestión de la Seguridad Operacional</h1>
-                  <h2>A su alcance <a href="{% url 'landing:login' %}" id="start-desktop" class="waves-effect waves-light btn-large"><i class="material-icons left">airplanemode_active</i>Iniciar</a></h2>                  
+                  <h1>Gestión de Seguridad Operacional, A tu alcance</h1>                  
                   <p id="start-mobile" class="text-center mt-5"><a href="{% url 'landing:login' %}" class="waves-effect waves-light btn-large"><i class="material-icons left">airplanemode_active</i>Iniciar</a></p>
                 </row>                                
               </div>
@@ -99,7 +98,7 @@
 <div id="modalPhoneApp" class="modal">
   <div class="modal-content">
     <h4>FagarApp</h4>
-    <p>Proximamente...</p>
+    <p>Próximamente...</p>
   </div>
   <div class="modal-footer">
     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
@@ -119,7 +118,7 @@
               <h3>Felix Garcia</h3>
               <div class="divider"></div>
               <br>
-              <p><a href="mailto:felixgarcia.dev@gmail.com?Subject=He%20Visto%20Tu%20Aplicación%20FagarSms">Mail</a></p>
+              <p><a href="mailto:felixgarcia.dev@gmail.com?Subject=He%20Visto%20Tu%20Aplicación%20FagarSms">E-mail</a></p>
               <p><a href="https://www.linkedin.com/in/felix-anibal-garcia/">LinkedIn</a></p>
               <p><a href="https://github.com/FelixGarciaDev">GitHub</a></p>
           </div>                
@@ -135,17 +134,17 @@
 <div id="modalFAQ" class="modal">
   <div class="modal-content">
     <h4>Preguntas frecuentes</h4>
-    <h6>¿Qu es FagarSms?</h6>
-    <p>FagarSms es un software como servicio diseñado para apoyar y direccionar los sistemas de gestión de la seguridad operacional en pequeños prestadores de servicios aéreos.</p>
-    <h6>¿Quiénes pueden usar FagarSMS?</h6>
-    <p>FagarSms puede ser usado por todo tipo de prestadores de servicios aéreos como:</p>
+    <h6>¿Qué es FagarSMS?</h6>
+    <p>FagarSMS es un SaaS diseñado para apoyar y direccionar los sistemas de gestión de la seguridad operacional en prestadores de servicios aéreos.</p>
+    <h6>¿Quiénes se pueden beneficiar de FagarSMS?</h6>
+    <p>FagarSMS esta dirigido a:</p>
     <ul>
       <li>🚁 Aeropuertos y Helipuertos</li>
       <li>🛫 Aerolíneas</li>
-      <li>✈ Prestadores de vuelos charter</li>
-      <li>👨‍✈️ Pilotos Particulares</li>
-      <li>🚕 Operadores de TaxyWay</li>
-      <li>🏢 Cualquier empresa que preste servicios relacionados a aviación civil</li>
+      <li>✈ Prestadores de vuelos chárter</li>
+      <li>👨‍✈️ Pilotos particulares</li>
+      <li>🚕 Operadores de Taxyway</li>
+      <li>🏢 Cualquier empresa relacionada con la aviación civil</li>
     </ul>
   </div>
   <div class="modal-footer">
